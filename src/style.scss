@@ -1,1 +1,18 @@
+@import "variables";
 
+// Import full Spectre source code
+@import "../node_modules/spectre.css/src/spectre";
+
+// Hero
+.hero-fullview {
+  @extend .hero;
+  height: 100vh;
+}
+
+.navbar{
+  background: linear-gradient(to right,  $secondary_color, $primary_color);
+}
+
+.md-padding{
+  padding: 1.5rem 0.5rem;
+}
