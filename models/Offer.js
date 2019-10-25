@@ -21,4 +21,4 @@ const offerSchema = mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.module('Offer', offerSchema)
+module.exports = mongoose.model('Offer', offerSchema)
