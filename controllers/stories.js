@@ -22,7 +22,7 @@ function show(req, res) {
 
 // create a story 
 function create(req, res) {
-  req.body.user = req.currentUser
+  req.body.postedBy = req.currentUser
   // console.log('create')
   Story
     .create(req.body)
@@ -33,14 +33,19 @@ function create(req, res) {
 
 // delete a story - /story/Id
 function deleteStory(req, res) {
-  // req.body.user = req.currentUser
+  
 
   console.log('delete')
   console.log('ID', req.params.id)
 
   Story.findById(req.params.id)
     .then(story => {
-      if (!story) return res.status(404).json({ message: 'no story ' })
+      if (!story) {
+        return res.status(404).json({ message: 'no story ' })
+      }
+      if (story.postedBy !== req.currentUser) {
+        return res.status(404).json({ message: 'not Authorized ' })
+      }
       story.remove()
       res.sendStatus(204)
     })
@@ -49,9 +54,15 @@ function deleteStory(req, res) {
 
 // edit a story /story/id
 function edit(req, res) {
+  req.body.postedBy = req.currentUser
   Story.findById(req.params.id)
     .then(story => {
-      if (!story) return res.status(404).json({ message: 'no story' })
+      if (!story) {
+        return res.status(404).json({ message: 'no story' })
+      }
+      if (story.postedBy !== req.currentUser) {
+        return res.status(404).json({ message: 'not Authorized ' })
+      }
       story.set(req.body)
       story.save()
       return res.status(202).json(story)
