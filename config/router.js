@@ -27,7 +27,7 @@ router.route('/login')
 
 // Handling create offer - /offers
 router.route('/offers')
-  .post(offer.create)
+  .post(secureRoute, offer.create)
 
 
 // Handling singel offer - /offers/:id 

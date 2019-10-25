@@ -6,17 +6,6 @@ const reactionSchema = mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 })
 
-// this is will be embedded on the Content model as well - this is to track all the bids
-/*
-const bidSchema = mongoose.Schema({
-  bidBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }, // who bid for the content
-  bidPrice: { type: Number, min: 1, required: true } // the bid price in GBP
-}, {
-  timestamps: true
-})
-*/
-
-
 // this is like the content (image/post/footage) the user would upload/post to advertise to sell
 const storySchema = mongoose.Schema({
   title: { type: String, required: true },

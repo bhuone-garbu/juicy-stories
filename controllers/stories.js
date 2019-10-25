@@ -6,7 +6,7 @@ function index(req, res) {
   Story
     .find(req.query)
     .then(stories => res.status(200).json(stories))
-    .catch(err => res.status(404).json(err))
+    .catch(err => res.status(505).json(err))
 }
 
 // making request for one story -/story/Id
@@ -17,7 +17,7 @@ function show(req, res) {
       if (!story) return res.status(404).json({ message: 'no story ' })
       res.status(200).json(story)
     })
-    .catch(err => res.status(404).json(err))
+    .catch(err => res.status(500).json(err))
 }
 
 // create a story 
@@ -27,14 +27,13 @@ function create(req, res) {
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
-    .catch(err => res.status(404).json(err))
+    .catch(err => res.status(505).json(err))
 }
 
 
 // delete a story - /story/Id
 function deleteStory(req, res) {
   
-
   console.log('delete')
   console.log('ID', req.params.id)
 
@@ -49,7 +48,13 @@ function deleteStory(req, res) {
       story.remove()
       res.sendStatus(204)
     })
-    .catch(err => res.status(404).json(err))
+    .catch(err => {
+      if (err.name === 'ValidationError') {
+        res.status(422).json(err)
+      } else {
+        res.status(500).json(err)
+      }
+    })
 }
 
 // edit a story /story/id
@@ -67,7 +72,13 @@ function edit(req, res) {
       story.save()
       return res.status(202).json(story)
     })
-    .catch(err => res.status(404).json(err))
+    .catch(err => {
+      if (err.name === 'ValidationError') {
+        res.status(422).json(err)
+      } else {
+        res.status(500).json(err)
+      }
+    })
 }
 
 

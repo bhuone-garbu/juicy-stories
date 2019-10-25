@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const idValidator = require('mongoose-id-validator')
 
 // the array of comments/message for chatting between buyer and sellers - negotiations
 const messageSchema = mongoose.Schema({
@@ -20,5 +21,8 @@ const offerSchema = mongoose.Schema({
 }, {
   timestamps: true
 })
+
+// this is middleware id validator that will check if object exists for existing references to the document
+offerSchema.plugin(idValidator)
 
 module.exports = mongoose.model('Offer', offerSchema)

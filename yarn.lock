@@ -1673,6 +1673,11 @@ clone-deep@^4.0.1:
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
 
+clone@^1.0.2:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
+  integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
@@ -4361,6 +4366,14 @@ mongodb@3.3.3:
   optionalDependencies:
     saslprep "^1.0.0"
 
+mongoose-id-validator@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/mongoose-id-validator/-/mongoose-id-validator-0.5.3.tgz#9dfa4512d70a952f757a4e580e405e5f2a420ec1"
+  integrity sha512-TEsB3KRmAPIEMchSQogMsLo1IS4jJMFyjI988dzq+lqDR2wxR+LyGYrhtjRhMMrVOIaoS2y7lQLq9B6FhEAeWA==
+  dependencies:
+    clone "^1.0.2"
+    traverse "^0.6.6"
+
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
@@ -6527,6 +6540,11 @@ tough-cookie@~2.4.3:
   dependencies:
     psl "^1.1.24"
     punycode "^1.4.1"
+
+traverse@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
+  integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
 trim-newlines@^1.0.0:
   version "1.0.0"
