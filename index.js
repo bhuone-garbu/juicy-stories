@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const { dbURI, port } = require('./config/environment')
 const router = require('./config/router')
+const logger = require('./lib/logger')
 
 // connect mongoose
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
@@ -11,6 +12,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 // hooking up the body parser so that request are parsed into JSON
 app.use(bodyParser.json())
+
+//Log all incoming requests to the console.
+app.use(logger)
 
 // handle all the GET, POST, PUT related http requests
 app.use('/api', router)

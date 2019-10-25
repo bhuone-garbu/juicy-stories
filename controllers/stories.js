@@ -1,26 +1,70 @@
 const Story = require('../models/Story')
 
 function index(req, res) {
-  console.log(req.query)
+  // console.log(req.query)
+  // query put in here for making broader requests to the MongoDB
   Story
     .find(req.query)
     .then(stories => res.status(200).json(stories))
     .catch(err => res.status(404).json(err))
 }
 
+// making request for one story -/story/Id
 function show(req, res) {
   Story
     .findById(req.params.id)
-    .then(story=> {
+    .then(story => {
       if (!story) return res.status(404).json({ message: 'no story ' })
-      res.status(200).json(story)     
+      res.status(200).json(story)
     })
-    .catch(err => res.status(404).json(err ))
+    .catch(err => res.status(404).json(err))
+}
+
+// create a story 
+function create(req, res) {
+  req.body.user = req.currentUser
+  // console.log('create')
+  Story
+    .create(req.body)
+    .then(story => res.status(201).json(story))
+    .catch(err => res.status(404).json(err))
+}
+
+
+// delete a story - /story/Id
+function deleteStory(req, res) {
+  // req.body.user = req.currentUser
+
+  console.log('delete')
+  console.log('ID', req.params.id)
+
+  Story.findById(req.params.id)
+    .then(story => {
+      if (!story) return res.status(404).json({ message: 'no story ' })
+      story.remove()
+      res.sendStatus(204)
+    })
+    .catch(err => res.status(404).json(err))
+}
+
+// edit a story /story/id
+function edit(req, res) {
+  Story.findById(req.params.id)
+    .then(story => {
+      if (!story) return res.status(404).json({ message: 'no story' })
+      story.set(req.body)
+      story.save()
+      return res.status(202).json(story)
+    })
+    .catch(err => res.status(404).json(err))
 }
 
 
 
 module.exports = {
   index,
-  show
+  show,
+  create,
+  deleteStory,
+  edit
 }
