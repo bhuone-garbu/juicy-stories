@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+
 import './style.scss'
+import SignUp from './components/SignupForm'
 
 class App extends React.Component {
   constructor(){
@@ -10,7 +12,14 @@ class App extends React.Component {
   }
 
   render(){
-    return null
+    return (
+
+      <div>
+        <SignUp/>
+      </div>
+
+
+    )
   }
 }
 
