@@ -14,23 +14,12 @@ class App extends React.Component {
 
   render(){
     return (
-<<<<<<< HEAD
-
-      <div>
-        <SignUp/>
-        <div></div>
-      </div>
-      
-
-
-=======
       <BrowserRouter>
         <Navbar/>
         <Switch>
           <Route path="/register" component={SignUp}/>
         </Switch>
       </BrowserRouter>
->>>>>>> development
     )
   }
 }
