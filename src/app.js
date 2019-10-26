@@ -16,7 +16,9 @@ class App extends React.Component {
 
       <div>
         <SignUp/>
+        <div></div>
       </div>
+      
 
 
     )
