@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../lib/Auth'
+import Auth from '../lib/auth'
 import { Link } from 'react-router-dom'
 
 
@@ -21,7 +21,6 @@ class Login extends React.Component {
 
   }
   handleChange(e) {
-    console.log(e.target.value)
     const data = { ... this.state.data, [e.target.id]: e.target.value }
     this.setState({ data })
 
@@ -34,8 +33,6 @@ class Login extends React.Component {
         Auth.setToken(res.data.token)
 
         this.props.history.push('/stories')
-        
-        // console.log(res.data.token)
       })
       .catch(err => console.log(err.message))
   }
@@ -53,13 +50,8 @@ class Login extends React.Component {
 
             <label className="form-label" htmlFor="password">Password</label>
             <input className="form-input input-lg" type="password" value={data.password} id="password" placeholder="Password"
-              onChange={this.handleChange}
-            />
+              onChange={this.handleChange}/>
 
-            <label className="form-label" htmlFor="passwordConfirmation">Confirm password</label>
-            <input className="form-input input-lg"  type="password" value={data.passwordConfirmation}id="passwordConfirmation" placeholder="Confirm password"
-              onChange={this.handleChange}
-            />
             <div className="card-footer text-center">
               <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button></Link>
             </div>

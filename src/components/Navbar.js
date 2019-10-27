@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Auth from '../lib/Auth'
-import Login from '../components/Login'
+import { Link, withRouter } from 'react-router-dom'
+import Auth from '../lib/auth'
 
 
 class Navbar extends React.Component {
@@ -9,18 +8,33 @@ class Navbar extends React.Component {
   constructor() {
     super()
     
+    this.state = {
+      isAuthenticated: false
+    }
 
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
-  handleSubmit() {
+
+  handleLogout() {
     Auth.logout()
-    
+    this.setState({ isAuthenticated: false })
+  }
+
+  componentDidMount(){
+    this.setState({ isAuthenticated: Auth.isAuthenticated() })
+  }
+
+  // 
+  componentDidUpdate(prevProps){
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.setState({ isAuthenticated: Auth.isAuthenticated() })
+    }
   }
 
 
   render() {
-    const AuthCheck = Auth.isAuthenticated()
-    console.log('check',AuthCheck)
+    const authCheck = this.state.isAuthenticated
     return (
       <header className="navbar md-padding">
         <section className="navbar-section">
@@ -40,8 +54,8 @@ class Navbar extends React.Component {
           </div>
         </section>
         <section className="navbar-section">
-          {!AuthCheck && <Link to="/login" ><button className="btn bg-secondary input-group-btn">Login</button></Link>}
-          {AuthCheck && <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleSubmit}>Logout</button>}
+          {!authCheck && <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>}
+          {authCheck && <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>}
           <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
         </section>
       </header>
@@ -49,4 +63,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)

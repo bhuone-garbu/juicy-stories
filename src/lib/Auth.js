@@ -2,18 +2,13 @@ class Auth {
 
   static setToken(token){
     localStorage.setItem('token', token)
-    console.log('set',token)
-
   }
 
   static getToken() {
-    console.log('token')
     return localStorage.getItem('token')
-
   }
 
   static logout() {
-    
     localStorage.removeItem('token')
   }
 
