@@ -1,14 +1,26 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Auth from '../lib/Auth'
+import Login from '../components/Login'
+
 
 class Navbar extends React.Component {
 
   constructor() {
     super()
+    
+
   }
 
-  render() {
+  handleSubmit() {
+    Auth.logout()
+    
+  }
 
+
+  render() {
+    const AuthCheck = Auth.isAuthenticated()
+    console.log('check',AuthCheck)
     return (
       <header className="navbar md-padding">
         <section className="navbar-section">
@@ -28,8 +40,9 @@ class Navbar extends React.Component {
           </div>
         </section>
         <section className="navbar-section">
-          <button className="btn bg-secondary input-group-btn">Login</button>
-          <button className="btn bg-error input-group-btn">Sign Up</button>
+          {!AuthCheck && <Link to="/login" ><button className="btn bg-secondary input-group-btn">Login</button></Link>}
+          {AuthCheck && <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleSubmit}>Logout</button>}
+          <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
         </section>
       </header>
     )

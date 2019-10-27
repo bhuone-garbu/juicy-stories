@@ -26,6 +26,14 @@ userSchema.virtual('passwordConfirmation')
   })
 
 
+userSchema.pre('validate', function checkPasswordAndFirstName(next){
+  if (this.isModified('password') && this.firstName === this.password || this.lastName === this.password) { // only if password was created or updated
+    this.invalidate('password', 'Name cannot be same as password' )
+  } 
+  next() // continue if fine
+})
+
+
 // mongoose pre 'validate' hook
 userSchema.pre('validate', function checkPassword(next){
   if (this.isModified('password') && this.password !== this._passwordConfirmation) { // only if password was created or updated
@@ -33,6 +41,7 @@ userSchema.pre('validate', function checkPassword(next){
   } 
   next() // continue if fine
 })
+
 
 
 // mongoose pre 'save' hook to salt/hash the password

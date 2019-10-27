@@ -23,7 +23,6 @@ class SignUp extends React.Component {
     
   }
   handleChange(e) {
-    
     const data = { ... this.state.data,[e.target.id]: e.target.value }
     this.setState({ data })
     

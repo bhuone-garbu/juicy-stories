@@ -34,8 +34,8 @@ function create(req, res) {
 // delete a story - /story/Id
 function deleteStory(req, res) {
   
-  console.log('delete')
-  console.log('ID', req.params.id)
+  // console.log('delete')
+  // console.log('ID', req.params.id)
 
   Story.findById(req.params.id)
     .then(story => {
