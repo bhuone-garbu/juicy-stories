@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './style.scss'
 import SignUp from './components/SignupForm'
 import Navbar from './components/Navbar'
+import Dashboard from './components/Dashboard'
 
 class App extends React.Component {
   constructor(){
@@ -18,6 +19,7 @@ class App extends React.Component {
         <Navbar/>
         <Switch>
           <Route path="/register" component={SignUp}/>
+          <Route path="/dashboard" component={Dashboard}/>
         </Switch>
       </BrowserRouter>
     )

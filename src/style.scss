@@ -16,3 +16,29 @@
 .md-padding {
   padding: 1.5rem 0.5rem;
 }
+
+.container {
+  width: 80vw;
+}
+
+a:focus {
+  box-shadow: none;
+}
+
+i {
+  font-size: 1.5rem;
+  margin: 0 5px;;
+}
+
+.tab .tab-item a {
+  border: 2px solid;
+  border-bottom: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: gray;
+  margin: 0 0.2rem 0 0;
+}
+
+.tab .tab-item.active a, .tab .tab-item a.active {
+  background: none;
+}

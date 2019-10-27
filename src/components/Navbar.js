@@ -1,5 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
+import logo from '../assets/logo2.png'
 
 class Navbar extends React.Component {
 
@@ -13,7 +14,7 @@ class Navbar extends React.Component {
       <header className="navbar md-padding">
         <section className="navbar-section">
           <a href="..." className="navbar-brand mr-4">
-            <img className="img-responsive" src="./assets/logo.png" width="100px" alt="macOS Yosemite Wallpaper" />
+            <img className="img-responsive" src={logo} width="100px" alt="logo" />
           </a>
           <a href="..." className="btn btn-link">About</a>
         </section>
