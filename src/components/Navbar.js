@@ -36,6 +36,7 @@ class Navbar extends React.Component {
 
 
   render() {
+    console.log(this.props.hello)
     const authCheck = this.state.isAuthenticated
     return (
       <div className="bg-primary">
