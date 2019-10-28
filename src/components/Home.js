@@ -16,9 +16,9 @@ class Home extends React.Component {
   componentDidMount(){
     Axios.get('/api/stories')
       .then(res => {
-        const topStories = res.data.slice(res.data.length - 3)
-        console.log(topStories)
-        this.setState({ topStories: topStories }) 
+        let topStories = res.data
+        if (topStories.length  > 3 ) topStories = res.data.slice(res.data.length - 3)
+        this.setState({ topStories }) 
       })
   }
 
