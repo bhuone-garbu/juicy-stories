@@ -9,11 +9,9 @@ class Navbar extends React.Component {
 
   constructor() {
     super()
-
     this.state = {
       isAuthenticated: false
     }
-
     this.handleLogout = this.handleLogout.bind(this)
   }
 
@@ -27,7 +25,6 @@ class Navbar extends React.Component {
     this.setState({ isAuthenticated: Auth.isAuthenticated() })
   }
 
-  // 
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.setState({ isAuthenticated: Auth.isAuthenticated() })
@@ -36,17 +33,15 @@ class Navbar extends React.Component {
 
 
   render() {
-    console.log(this.props.hello)
     const authCheck = this.state.isAuthenticated
     return (
       <div className="bg-primary">
         <div className="container">
           <header className="navbar md-padding">
             <section className="navbar-section">
-              <a href="..." className="navbar-brand mr-4">
+              <Link to="/" className="navbar-brand mr-4">
                 <img className="img-responsive" src={logo} width="100px" alt="logo" />
-              </a>
-              <a href="..." className="btn btn-link">About</a>
+              </Link>
             </section>
             <section className="navbar-center">
               <div className="input-group input-inline">
@@ -59,9 +54,22 @@ class Navbar extends React.Component {
               </div>
             </section>
             <section className="navbar-section">
-              {!authCheck && <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>}
-              {authCheck && <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>}
-              <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
+              {!authCheck &&
+                <>
+                  <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>
+                  <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
+                </>
+              }
+              {authCheck &&
+                <>
+                  <Link to="/dashboard">
+                    <figure className="avatar avatar-lg">
+                      <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
+                    </figure>
+                  </Link>
+                  <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>
+                </>
+              }
             </section>
           </header>
         </div>

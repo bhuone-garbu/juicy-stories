@@ -30,7 +30,6 @@ class SignUp extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state.data)
 
     axios.post('api/register', this.state.data)
       .then(res => console.log(res))

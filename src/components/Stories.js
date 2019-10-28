@@ -8,7 +8,6 @@ class Stories extends React.Component {
 
     this.state = {
       stories: []
-
     }
 
   }
@@ -16,16 +15,11 @@ class Stories extends React.Component {
   componentDidMount() {
     Axios.get('/api/stories')
       .then(res => {
-        const currentStories = res.data
-        console.log(currentStories)
         this.setState({ stories: res.data })
       })
   }
 
-
-
   render() {
-    console.log('state', this.state.stories)
     const data = this.state.stories
     return (
       <div>

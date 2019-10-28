@@ -1,5 +1,5 @@
 import React from 'react'
-import Axios from 'axios'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 
@@ -14,7 +14,7 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-    Axios.get('/api/stories')
+    axios.get('/api/stories')
       .then(res => {
         let topStories = res.data
         if (topStories.length  > 3 ) topStories = res.data.slice(res.data.length - 3)
@@ -23,7 +23,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log('state',this.state.topStories)
     return (
       <section>
         
