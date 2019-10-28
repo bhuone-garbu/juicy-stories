@@ -17,7 +17,7 @@ const offerSchema = mongoose.Schema({
   seller: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   story: { type: mongoose.Schema.ObjectId, ref: 'Story', required: true },
   status: { type: String, required: true, enum: ['Offer sent', 'Accepted', 'Rejected', 'Cancelled'] },
-  messageSchema: [messageSchema]
+  message: [messageSchema]
 }, {
   timestamps: true
 })
