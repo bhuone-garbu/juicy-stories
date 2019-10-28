@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import './style.scss'
+import './styles/style.scss'
 
 import SignUp from './components/SignupForm'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/dashboard/Dashboard'
 
 class App extends React.Component {
   constructor(){

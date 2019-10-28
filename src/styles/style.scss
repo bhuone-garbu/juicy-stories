@@ -1,7 +1,7 @@
 @import "variables";
 
 // Import full Spectre source code
-@import "../node_modules/spectre.css/src/spectre";
+@import "../../node_modules/spectre.css/src/spectre";
 
 // Hero
 .hero-fullview {
@@ -18,7 +18,7 @@
 }
 
 .container {
-  width: 80vw;
+  width: 85vw;
 }
 
 a:focus {
@@ -30,15 +30,24 @@ i {
   margin: 0 5px;;
 }
 
+/* Overriding some colors and styles from spectre */
 .tab .tab-item a {
-  border: 2px solid;
-  border-bottom: none;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  background: gray;
-  margin: 0 0.2rem 0 0;
+  background: #808080;
+  padding: 0.5rem 1rem;
+}
+
+.tab {
+  margin: 0.2rem 0 0 0;
 }
 
 .tab .tab-item.active a, .tab .tab-item a.active {
   background: none;
+  background: linear-gradient($dark_color, $primary_color);
+}
+
+.tab-container {
+  background: $light-color;
+  margin: 0;
 }

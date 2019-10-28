@@ -9,7 +9,7 @@ class Navbar extends React.Component {
 
   constructor() {
     super()
-    
+
     this.state = {
       isAuthenticated: false
     }
@@ -23,12 +23,12 @@ class Navbar extends React.Component {
     this.setState({ isAuthenticated: false })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({ isAuthenticated: Auth.isAuthenticated() })
   }
 
   // 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.setState({ isAuthenticated: Auth.isAuthenticated() })
     }
