@@ -9,12 +9,6 @@
   height: 100vh;
 }
 
-// .navbar {
-//   background: linear-gradient(to right,  $secondary_color, $primary_color);
-//   background: $secondary_color;
-//   background: $primary_color;
-// }
-
 .md-padding {
   padding: 1.5rem 0.5rem;
 }
@@ -34,8 +28,6 @@ i {
 
 /* Overriding some colors and styles from spectre */
 .tab {
-  margin: 0.2rem 0 0 0;
-  padding: 0 0.4rem;
 
   .tab-item a {
     border-top-left-radius: 8px;
