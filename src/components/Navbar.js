@@ -36,6 +36,7 @@ class Navbar extends React.Component {
 
 
   render() {
+    console.log(this.props.hello)
     const authCheck = this.state.isAuthenticated
     return (
       <header className="navbar md-padding">
@@ -56,8 +57,8 @@ class Navbar extends React.Component {
           </div>
         </section>
         <section className="navbar-section">
-          {!authCheck && <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>}
-          {authCheck && <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>}
+          {!authCheck && <Link to="/login"><button className="btn bg-warning input-group-btn">Login</button></Link>}
+          {authCheck && <button type="submit" className="btn bg-warning input-group-btn" onClick={this.handleLogout}>Logout</button>}
           <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
         </section>
       </header>
