@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './style.scss'
+
 import SignUp from './components/SignupForm'
+import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
 
@@ -20,6 +22,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/register" component={SignUp}/>
           <Route path="/dashboard" component={Dashboard}/>
+          <Route path="/login" component={Login}/>
         </Switch>
       </BrowserRouter>
     )

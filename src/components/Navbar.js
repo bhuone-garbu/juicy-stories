@@ -1,15 +1,42 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
 import logo from '../assets/logo2.png'
+import { Link, withRouter } from 'react-router-dom'
+import Auth from '../lib/auth'
+
 
 class Navbar extends React.Component {
 
   constructor() {
     super()
+    
+    this.state = {
+      isAuthenticated: false
+    }
+
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
-  render() {
 
+  handleLogout() {
+    Auth.logout()
+    this.setState({ isAuthenticated: false })
+  }
+
+  componentDidMount(){
+    this.setState({ isAuthenticated: Auth.isAuthenticated() })
+  }
+
+  // 
+  componentDidUpdate(prevProps){
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.setState({ isAuthenticated: Auth.isAuthenticated() })
+    }
+  }
+
+
+  render() {
+    const authCheck = this.state.isAuthenticated
     return (
       <header className="navbar md-padding">
         <section className="navbar-section">
@@ -29,12 +56,13 @@ class Navbar extends React.Component {
           </div>
         </section>
         <section className="navbar-section">
-          <button className="btn bg-secondary input-group-btn">Login</button>
-          <button className="btn bg-error input-group-btn">Sign Up</button>
+          {!authCheck && <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>}
+          {authCheck && <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>}
+          <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
         </section>
       </header>
     )
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)
