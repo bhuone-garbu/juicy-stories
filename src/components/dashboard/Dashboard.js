@@ -1,24 +1,38 @@
 import React from 'react'
+import axios from 'axios'
 
+// all local imports
 import Purchase from './Purchase'
 import StoryCard from '../StoryCard'
+
 
 class Dashboard extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: 'purchases'
+      selected: 'purchases',
+      stories: null
     }
 
     this.handleClick = this.handleClick.bind(this)
   }
 
+
+  componentDidMount(){
+    console.log('did mount')
+    axios.get('/api/stories')
+      .then(response => this.setState({ stories: response.data }))
+      .catch(err => console.log(err))
+  }
+
+
   handleClick(e) {
     this.setState({ selected: e.target.name })
   }
 
+
   render() {
-    const selected = this.state.selected
+    const { selected, stories } = this.state
     return (
       <section className="container">
         <div className="text-center">
@@ -35,7 +49,7 @@ class Dashboard extends React.Component {
           </li>
           <li className="tab-item">
             <a href="#" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
-              <i className="fas fa-money-bill fa-rotate-90"/>My sales</a>
+              <i className="fas fa-money-bill fa-rotate-45"/>My sales</a>
           </li>
           <li className="tab-item">
             <a href="#" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
@@ -43,7 +57,7 @@ class Dashboard extends React.Component {
           </li>
         </ul>
 
-        {selected === 'purchases' && <StoryCard title="hello" description="sfkdhskfdskfksfksfkdsksfhhfhsf sf sfjsf slfksjfkls ls slj "/>}
+        {(selected === 'purchases' && stories) && stories.map( story=> (<StoryCard key={story._id} { ...story }/>))}
 
       </section>
     )
