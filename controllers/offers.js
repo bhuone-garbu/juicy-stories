@@ -9,8 +9,8 @@ function index(req, res) {
     .catch(err => res.status(500).json(err))
 }
 
-// give an for offer - /offers
-function create(req,res) {
+// create an for offer - /offers
+function create(req, res) {
   Offer
     .create(req.body)
     .then(offer => res.status(201).json(offer))
@@ -54,11 +54,30 @@ function update(req, res) {
     })
 }
 
+// Create Messages On Offer - /offers/:id/messages
+function messagesCreate(req, res) {
+  Offer.findById(req.params.id)
+    .then(messages => {
+      if (!messages) res.status(404).json({ error: 'Offer Not Found' })
+      messages.message.push(req.body)
+      return messages.save()
+    })
+    .then(messages => res.status(201).json(messages))
+    .catch(err => res.json(err))
+}
 
+// Show All Messages - /offers/:id/messages
+function allMessages(req, res) {
+  Offer.find()
+    .then(offer => res.status(200).json(offer))
+    .catch(err => res.status(500).json(err))
+}
 
-module.exports  = {
+module.exports = {
   index,
   create,
   show,
-  update
+  update,
+  messagesCreate,
+  allMessages
 }
