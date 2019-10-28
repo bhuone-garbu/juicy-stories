@@ -23,7 +23,6 @@ class Stories extends React.Component {
   }
 
 
-
   render() {
     console.log('state', this.state.stories)
     const data = this.state.stories
