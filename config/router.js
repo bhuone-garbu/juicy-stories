@@ -28,12 +28,21 @@ router.route('/login')
 // Handling create offer - /offers
 router.route('/offers')
   .post(secureRoute, offer.create)
+  .get(secureRoute,offer.index)
 
 
 // Handling singel offer - /offers/:id 
 router.route('/offers/:id')
   .get(offer.show)
   .put(secureRoute, offer.update)
+
+// Handling Messages Being Posted
+router.route('/offers/:id/messages')
+  .post(secureRoute,offer.messagesCreate)
+
+// Getting All Messages
+router.route('/offers/:id/messages')
+  .get(secureRoute, offer.allMessages)
 
 
 module.exports = router

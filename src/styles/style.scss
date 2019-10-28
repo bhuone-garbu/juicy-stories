@@ -1,0 +1,63 @@
+@import "variables";
+
+// Import full Spectre source code
+@import "../../node_modules/spectre.css/src/spectre";
+
+// Hero
+.hero-fullview {
+  @extend .hero;
+  height: 100vh;
+}
+
+// .navbar {
+//   background: linear-gradient(to right,  $secondary_color, $primary_color);
+//   background: $secondary_color;
+//   background: $primary_color;
+// }
+
+.md-padding {
+  padding: 1.5rem 0.5rem;
+}
+
+.container {
+  width: 85vw;
+}
+
+a:focus {
+  box-shadow: none;
+}
+
+i {
+  font-size: 1.5rem;
+  margin: 0 5px;;
+}
+
+/* Overriding some colors and styles from spectre */
+.tab {
+  margin: 0.2rem 0 0 0;
+
+  .tab-item a {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #808080;
+    padding: 0.5rem 1rem;
+  }
+
+  .tab-item.active a, .tab-item a.active {
+    background: none;
+    background: linear-gradient($dark_color, $primary_color);
+  }
+}
+
+
+.vertical-margin {
+  margin: 1rem 0;
+}
+
+.top-padding {
+  padding: 1rem 0;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 1rem rgba(48,55,66,.15);
+}
