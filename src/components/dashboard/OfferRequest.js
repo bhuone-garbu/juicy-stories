@@ -31,7 +31,8 @@ class OfferRequest extends React.Component {
           <div className="column col-8">
             <StoryCard { ...offer.story }/>
           </div>
-          <div className="column col-4">
+          <div className="column col-4 v-center">
+            
           </div>
         </div>
       </article>)

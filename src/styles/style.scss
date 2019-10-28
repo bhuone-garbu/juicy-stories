@@ -56,6 +56,15 @@ i {
   }
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+// flex box
+.v-center {
+  display: flex;
+  align-items: center;
+}
 
 .vertical-margin {
   margin: 1rem 0;

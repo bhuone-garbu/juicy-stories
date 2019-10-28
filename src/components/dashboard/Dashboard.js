@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
     return (
       <section className="container">
         <div className="text-center">
-          <figure className="avatar avatar-xxl text-center">
+          <figure className="avatar avatar-xxl">
             <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
           </figure>
         </div>
