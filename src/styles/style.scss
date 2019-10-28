@@ -9,9 +9,11 @@
   height: 100vh;
 }
 
-.navbar {
-  background: linear-gradient(to right,  $secondary_color, $primary_color);
-}
+// .navbar {
+//   background: linear-gradient(to right,  $secondary_color, $primary_color);
+//   background: $secondary_color;
+//   background: $primary_color;
+// }
 
 .md-padding {
   padding: 1.5rem 0.5rem;
@@ -31,23 +33,31 @@ i {
 }
 
 /* Overriding some colors and styles from spectre */
-.tab .tab-item a {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background: #808080;
-  padding: 0.5rem 1rem;
-}
-
 .tab {
   margin: 0.2rem 0 0 0;
+
+  .tab-item a {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #808080;
+    padding: 0.5rem 1rem;
+  }
+
+  .tab-item.active a, .tab-item a.active {
+    background: none;
+    background: linear-gradient($dark_color, $primary_color);
+  }
 }
 
-.tab .tab-item.active a, .tab .tab-item a.active {
-  background: none;
-  background: linear-gradient($dark_color, $primary_color);
+
+.vertical-margin {
+  margin: 1rem 0;
 }
 
-.tab-container {
-  background: $light-color;
-  margin: 0;
+.top-padding {
+  padding: 1rem 0;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 1rem rgba(48,55,66,.15);
 }

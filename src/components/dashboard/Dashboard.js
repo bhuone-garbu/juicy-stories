@@ -57,7 +57,8 @@ class Dashboard extends React.Component {
           </li>
         </ul>
 
-        {(selected === 'purchases' && stories) && stories.map( story=> (<StoryCard key={story._id} { ...story }/>))}
+        {(selected === 'purchases' && stories) && stories.map( story=> (
+          <article key={story._id} className="bg-gray"><StoryCard { ...story }/></article>))}
 
       </section>
     )
