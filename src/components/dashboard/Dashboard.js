@@ -1,28 +1,17 @@
 import React from 'react'
-import axios from 'axios'
 
 // all local imports
 import Purchase from './Purchase'
-import StoryCard from '../StoryCard'
-
+import OfferRequest from './OfferRequest'
 
 class Dashboard extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: 'purchases',
-      stories: null
+      selected: 'purchases'
     }
 
     this.handleClick = this.handleClick.bind(this)
-  }
-
-
-  componentDidMount(){
-    console.log('did mount')
-    axios.get('/api/stories')
-      .then(response => this.setState({ stories: response.data }))
-      .catch(err => console.log(err))
   }
 
 
@@ -32,7 +21,7 @@ class Dashboard extends React.Component {
 
 
   render() {
-    const { selected, stories } = this.state
+    const { selected } = this.state
     return (
       <section className="container">
         <div className="text-center">
@@ -57,8 +46,8 @@ class Dashboard extends React.Component {
           </li>
         </ul>
 
-        {(selected === 'purchases' && stories) && stories.map( story=> (
-          <article key={story._id} className="bg-gray"><StoryCard { ...story }/></article>))}
+        {selected === 'purchases' && <Purchase/>}
+        {selected === 'requests' && <OfferRequest/>}
 
       </section>
     )

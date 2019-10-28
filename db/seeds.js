@@ -26,7 +26,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user,
         status: 'draft',
-        category: 'audio'
+        category: 'audio',
+        minimumPrice: 900
       },
       {
         title: 'Video clip of NHS nurse negligence',
@@ -34,7 +35,17 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user,
         status: 'draft',
-        category: 'video'
+        category: 'video',
+        minimumPrice: 45.5
+      },
+      {
+        title: 'Paranormal - CCTV of plush toy escapes from crane machine like Toy Story at bar',
+        description: 'Footage of plush toy appears to make a daring escape from a crane machine at a bar',
+        contentLink: 'http://google.co.uk/',
+        postedBy: user,
+        status: 'draft',
+        category: 'video',
+        minimumPrice: 50.5
       }])
     })
     .then(stories => {
