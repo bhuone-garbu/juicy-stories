@@ -35,6 +35,14 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         postedBy: user,
         status: 'draft',
         category: 'video'
+      },
+      {
+        title: 'Video clip of NHS nurse negligence',
+        description: 'Footage of a nurse beating a helpless elderly person',
+        contentLink: 'http://google.co.uk/',
+        postedBy: user,
+        status: 'draft',
+        category: 'video'
       }])
     })
     .then(stories => {
