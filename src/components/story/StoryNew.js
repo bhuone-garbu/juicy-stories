@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import User from '../lib/auth'
+import User from '../../lib/auth'
 import StoryForm from './StoryForm'
 
 

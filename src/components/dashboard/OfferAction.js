@@ -17,8 +17,8 @@ class OfferAction extends React.Component {
           <button className="btn bg-warning input-group-btn">Counter</button>
         </div>
         <div className="vertical-margin h-padding v-margin h-center">
-          <Link to="/messages">
-            <i className="icon icon-2x icon-mail" />Messages
+          <Link to={`/offers/${this.props.offerId}/messages`}>
+            <i className="icon icon-2x icon-mail"/>Messages
           </Link>
         </div>
       </>

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import Auth from '../../lib/auth'
-import StoryCard from '../StoryCard'
+import StoryCard from '../story/StoryCard'
 import OfferAction from '../dashboard/OfferAction'
 
 class OfferRequest extends React.Component {
@@ -33,7 +33,7 @@ class OfferRequest extends React.Component {
             <StoryCard {...offer.story} />
           </div>
           <div className="column col-4 h-center flex-column">
-            <OfferAction/>
+            <OfferAction offerId={offer._id}/>
           </div>
         </div>
       </article>)

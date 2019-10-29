@@ -1,31 +1,25 @@
 import React from 'react'
 import axios from 'axios'
+import StoryCard from './StoryCard'
+import StoryAction from './StoryAction'
 
-import StoryCard from '../story/StoryCard'
-import StoryAction from '../story/StoryAction'
 
-class Purchase extends React.Component {
+class Stories extends React.Component {
   constructor() {
     super()
+
     this.state = {
-      stories: null
+      stories: []
     }
+
   }
 
-
-  componentDidMount(){
-    // just faking with the timeout so that it's not too responsive
-    setTimeout(() => axios.get('/api/stories')
-      .then(response => this.setState({ stories: response.data }))
-      .catch(err => console.log(err)), 300 )
-    
+  componentDidMount() {
+    axios.get('/api/stories')
+      .then(res => {
+        this.setState({ stories: res.data })
+      })
   }
-
-
-  handleClick(e) {
-    this.setState({ selected: e.target.name })
-  }
-
 
   render() {
     const { stories } = this.state
@@ -44,6 +38,9 @@ class Purchase extends React.Component {
       ))
     )
   }
+
 }
 
-export default Purchase
+
+
+export default Stories

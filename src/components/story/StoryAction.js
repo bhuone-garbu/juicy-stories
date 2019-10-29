@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Auth from '../lib/auth'
-import Helper from '../lib/helper'
+import Auth from '../../lib/auth'
+import Helper from '../../lib/helper'
 
 // this component will be context aware to display - buy or sell option
 // depending on who the user is logged in
