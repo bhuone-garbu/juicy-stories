@@ -74,7 +74,7 @@ class Navbar extends React.Component {
                     
                     {/* <i id="uploadIcon" className="fas fa-upload "/> */}
                   </Link>
-                  <button className="btn tooltip bg-secondary input-group-btn" data-tooltip="🥺" onClick={this.handleLogout}>
+                  <button className="btn tooltip bg-secondary input-group-btn" data-tooltip="Logout? 🥺" onClick={this.handleLogout}>
                     <i className="icon icon-shutdown"/>Logout
                   </button>
                 </>

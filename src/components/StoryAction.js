@@ -30,7 +30,7 @@ class StoryAction extends React.Component {
         {!isOwner &&
           <>
             <p>Minium accepted price</p>
-            <h3 className="inline-block h3">{story.minimumPrice}</h3>
+            <h3 className="inline-block h3">{story.minimumPrice} JC</h3>
             <button className="btn bg-secondary input-group-btn">Make an offer</button>
           </>
         }

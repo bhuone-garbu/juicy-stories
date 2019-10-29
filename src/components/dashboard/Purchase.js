@@ -32,7 +32,7 @@ class Purchase extends React.Component {
     if (!stories) return <div className="loading loading-lg"></div>
     return (
       stories.map( story=> (
-        <article key={story._id} className="columns bg-gray box-shadow">
+        <article key={story._id} className="columns bg-gray box-shadow v-margin">
           <div className="column col-9">
             <StoryCard { ...story }/>
           </div>

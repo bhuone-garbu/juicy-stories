@@ -4,7 +4,7 @@ import React from 'react'
 import Helper from '../../lib/helper'
 import Purchase from './Purchase'
 import OfferRequest from './OfferRequest'
-import SalesCard from '../SalesCard'
+import SalesCard from './SalesCard'
 
 class Dashboard extends React.Component {
   constructor() {
@@ -19,7 +19,9 @@ class Dashboard extends React.Component {
 
 
   handleClick(e) {
-    this.setState({ selected: e.target.name })
+    e.preventDefault()
+    const name = e.target.name
+    if (name) this.setState({ selected: name })
   }
 
   componentDidMount(){
@@ -43,22 +45,25 @@ class Dashboard extends React.Component {
         {/* this is just for toggling */}
         <ul className="tab">
           <li className="tab-item">
-            <a href="#" className={selected === 'purchases' ? 'active text-light' : ''} onClick={this.handleClick} name="purchases">
-              <i className="fas fa-pound-sign"/>My purchases</a>
+            <a href="#?" className={selected === 'purchases' ? 'active text-light' : ''} onClick={this.handleClick} name="purchases">
+              <i className="fas fa-pound-sign"/>My purchases
+            </a>
           </li>
           <li className="tab-item">
-            <a href="#" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
-              <i className="fas fa-money-bill fa-rotate-45"/>My stories</a>
+            <a href="#?" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
+              <i className="fas fa-money-bill fa-rotate-45"/>My stories
+            </a>
           </li>
           <li className="tab-item">
-            <a href="#" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
-              <i className="far fa-handshake" />Open requests</a>
+            <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
+              <i className="far fa-handshake" name="requests"/>Open requests
+            </a>
           </li>
         </ul>
 
         {selected === 'purchases' && <Purchase/>}
-        {selected === 'requests' && <OfferRequest/>}
         {selected === 'sales' && <SalesCard/>}
+        {selected === 'requests' && <OfferRequest/>}
 
       </section>
     )

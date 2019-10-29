@@ -3,10 +3,16 @@
 // Import full Spectre source code
 @import "../../node_modules/spectre.css/src/spectre";
 
-// Hero
+
+// hero
 .hero-fullview {
   @extend .hero;
   height: 100vh;
+}
+
+.btn {
+  border: none;
+  margin: 0 0.25rem;
 }
 
 .md-padding {
@@ -32,6 +38,10 @@ i {
 
 /* Overriding some colors and styles from spectre */
 .tab {
+
+  .tab-item {
+    cursor: pointer;
+  }
 
   .tab-item a {
     border-top-left-radius: 8px;
@@ -85,6 +95,10 @@ i {
 // adding a consistent 1rem margin at both top and bottom side
 .v-margin {
   margin: 1rem 0;
+}
+
+.h-margin {
+  margin: 0 0.5rem;
 }
 
 .top-padding {

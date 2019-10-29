@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import Auth from '../lib/Auth'
+import Auth from '../../lib/auth'
 
 
 class SalesCard extends React.Component {
@@ -9,27 +9,20 @@ class SalesCard extends React.Component {
     super()
 
     this.state = {
-      Data: []
-
+      offers: []
     }
   }
 
   componentDidMount() {
     axios.get('/api/offers', { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
-      .then(res => {
-
-        const Data = res.data
-
-        this.setState({ Data: Data })
-      })
+      .then(res => this.setState({ offers: res.data }))
+      .catch(err => console.log(err))
   }
 
   render() {
-    console.log('state', this.state.Data)
-    const offer = this.state.Data
-    console.log('offer', offer)
+    const offers = this.state.offers
     
-    if (this.state.Data.length === 0) return <div className="loading loading-lg"></div>
+    if (offers.length === 0) return <div className="loading loading-lg"></div>
     return (
       <div>
         <section>
@@ -43,9 +36,9 @@ class SalesCard extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {!this.state.Data && <div className="loading loading-lg"></div>}
-              {this.state.Data &&
-                this.state.Data.map(offer => (
+              {!offers && <div className="loading loading-lg"></div>}
+              {offers &&
+                offers.map(offer => (
                   <tr key={offer._id}>
                     <td>{offer.story.title}</td>
                     <td >{offer.offerPrice}</td>
