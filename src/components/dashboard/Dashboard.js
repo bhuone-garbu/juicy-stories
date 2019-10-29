@@ -4,6 +4,7 @@ import React from 'react'
 import Helper from '../../lib/helper'
 import Purchase from './Purchase'
 import OfferRequest from './OfferRequest'
+import SalesCard from '../SalesCard'
 
 class Dashboard extends React.Component {
   constructor() {
@@ -57,6 +58,7 @@ class Dashboard extends React.Component {
 
         {selected === 'purchases' && <Purchase/>}
         {selected === 'requests' && <OfferRequest/>}
+        {selected === 'sales' && <SalesCard/>}
 
       </section>
     )
