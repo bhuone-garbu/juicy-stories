@@ -1,14 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class OfferAction extends React.Component {
 
-  constructor(){
+  constructor() {
     super()
   }
 
-  
 
-  render(){
+  render() {
     return (
       <>
         <div className="h-center">
@@ -18,7 +18,10 @@ class OfferAction extends React.Component {
         </div>
         <div className="vertical-margin h-padding v-margin h-center">
           <a href="#">
-            <i className="icon icon-2x icon-mail"/>Messages</a>
+            <i className="icon icon-2x icon-mail" />Messages</a>
+          <Link to="/messages"><a>
+            <i className="icon icon-2x icon-mail" />Messages</a>
+          </Link>
         </div>
       </>
     )

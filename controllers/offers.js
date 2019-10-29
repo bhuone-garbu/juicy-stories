@@ -60,10 +60,10 @@ function update(req, res) {
 // Create Messages On Offer - /offers/:id/messages
 function messagesCreate(req, res) {
   Offer.findById(req.params.id)
-    .then(messages => {
-      if (!messages) res.status(404).json({ error: 'Offer Not Found' })
-      messages.message.push(req.body)
-      return messages.save()
+    .then(offer => {
+      if (!offer) res.status(404).json({ error: 'Offer Not Found' })
+      offer.message.push(req.body)
+      return offer.save()
     })
     .then(messages => res.status(201).json(messages))
     .catch(err => res.json(err))
@@ -71,10 +71,15 @@ function messagesCreate(req, res) {
 
 // Show All Messages - /offers/:id/messages
 function allMessages(req, res) {
-  Offer.find()
-    .then(offer => res.status(200).json(offer))
+  Offer.findById(req.params.id)
+    .then(offer => {
+      if (!offer) return res.status(404).json({ message: 'no offers' })
+      console.log(offer.message)
+      res.status(200).json(offer.message)
+    })
     .catch(err => res.status(500).json(err))
 }
+
 
 module.exports = {
   index,
