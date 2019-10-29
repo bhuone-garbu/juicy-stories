@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class OfferAction extends React.Component {
 
-  constructor(){
+  constructor() {
     super()
   }
 
-  render(){
+  render() {
     return (
       <>
         <div>
@@ -15,8 +16,9 @@ class OfferAction extends React.Component {
           <button className="btn bg-warning input-group-btn">Counter</button>
         </div>
         <div className="vertical-margin h-padding v-margin">
-          <a href="#">
-            <i className="icon icon-2x icon-mail"/>Messages</a>
+          <Link to="/messages"><a>
+            <i className="icon icon-2x icon-mail" />Messages</a>
+          </Link>
         </div>
       </>
     )

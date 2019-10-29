@@ -72,6 +72,27 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
       }])
     })
     .then(offers => {
+      offers[0].message.push({
+        text: 'hello',
+        user: offers[0].buyer
+      })
+      offers[0].save()
+      {
+        offers[1].message.push({
+          text: 'hey there buddy',
+          user: offers[0].buyer
+        })
+      }
+      offers[1].save()
+      {
+        offers[2].message.push({
+          text: 'heeeeelloooooo',
+          user: offers[0].buyer
+        })
+        return offers[2].save()
+      }
+    })
+    .then(offers => {
       console.log(`${offers.length} offers created from seeds`)
     })
     .catch(err => console.error(err))
