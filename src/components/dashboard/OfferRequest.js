@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import Auth from '../../lib/auth'
 import StoryCard from '../StoryCard'
+import OfferAction from '../dashboard/OfferAction'
 
 class OfferRequest extends React.Component {
 
@@ -27,12 +28,12 @@ class OfferRequest extends React.Component {
 
     return offers.map(offer => (
       <article key={offer._id}>
-        <div className="columns box-shadow vertical-margin top-padding">
+        <div className="columns box-shadow v-margin top-padding">
           <div className="column col-8">
-            <StoryCard { ...offer.story }/>
+            <StoryCard {...offer.story} />
           </div>
-          <div className="column col-4 v-center">
-            
+          <div className="column col-4 h-center flex-column">
+            <OfferAction/>
           </div>
         </div>
       </article>)

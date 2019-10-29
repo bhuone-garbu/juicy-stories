@@ -5,7 +5,7 @@ const StoryCard = ({ title, description, options = {} }) => {
   const classes = options.classes ? options.classes : ''
 
   return (
-    <div className={`columns vertical-margin top-padding ${classes}`}>
+    <div className={`columns v-margin top-padding ${classes}`}>
 
       {/* this will be section for displaying the image/video of the content */}
       <div className="column col-4">

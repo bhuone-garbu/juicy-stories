@@ -24,8 +24,8 @@ class Dashboard extends React.Component {
     const { selected } = this.state
     return (
       <section className="container">
-        <div className="text-center">
-          <figure className="avatar avatar-xxl">
+        <div className="empty">
+          <figure className="empty-icon avatar avatar-xxl">
             <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
           </figure>
         </div>
@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
           </li>
           <li className="tab-item">
             <a href="#" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
-              <i className="fas fa-money-bill fa-rotate-45"/>My sales</a>
+              <i className="fas fa-money-bill fa-rotate-45"/>My stories</a>
           </li>
           <li className="tab-item">
             <a href="#" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
