@@ -20,14 +20,14 @@ function show(req, res) {
     .catch(err => res.status(500).json(err))
 }
 
-// create a story 
+// create a story - /story
 function create(req, res) {
   req.body.postedBy = req.currentUser
   // console.log('create')
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
-    .catch(err => res.status(505).json(err))
+    .catch(err => res.status(400).json(err))
 }
 
 
