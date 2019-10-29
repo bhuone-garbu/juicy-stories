@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import StoryCard from './StoryCard'
 
 
 class Stories extends React.Component {
@@ -21,21 +22,17 @@ class Stories extends React.Component {
 
   render() {
     const data = this.state.stories
+    console.log(data)
     return (
       <div>
         {!data && <div className="loading loading-lg"></div>}
         {data &&
           data.map(story => (
-            <div className="card" key={story._id}>
+            <div className="card top-padding" key={story._id}>
               <a href={story.url} target="blank">
-                <div className="card-header">
-                  <div className="card-title h5">{story.title}</div>
-                  <div className="card-subtitle text-gray">{story.description}</div>
-                </div>
-                <div className="card-image">
-                  <img src={story.urlToImage} className="img-responsive" alt="article image"></img>
-                </div>
-              </a>
+                <StoryCard {... story}/>
+                <div className="text-right price h3">Min price :{story.minimumPrice} JC</div>
+              </a> 
             </div>
           ))}
 

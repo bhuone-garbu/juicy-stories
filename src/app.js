@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
 import Home from './components/Home'
 import Stories from './components/Stories'
+import StoryNew from './components/StoryNew'
 
 class App extends React.Component {
   constructor(){
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route path="/register" component={SignUp}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/login" component={Login}/>
+          <Route path="/new" component={StoryNew}/>
         </Switch>
       </BrowserRouter>
     )
