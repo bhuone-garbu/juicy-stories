@@ -5,6 +5,9 @@ function index(req, res) {
   // query put in here for making broader requests to the MongoDB
   Offer
     .find(req.query)
+    .populate('story')
+    .populate('seller')
+    .populate('buyer')
     .then(offer => res.status(200).json(offer))
     .catch(err => res.status(500).json(err))
 }

@@ -35,11 +35,12 @@ i {
 /* Overriding some colors and styles from spectre */
 .tab {
   margin: 0.2rem 0 0 0;
+  padding: 0 0.4rem;
 
   .tab-item a {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background: #808080;
+    background: #b1b0b0;
     padding: 0.5rem 1rem;
   }
 
@@ -49,6 +50,21 @@ i {
   }
 }
 
+.avatar {
+  &.avatar-xxl {
+    @include avatar-base($unit-25);
+  }
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// flex box
+.v-center {
+  display: flex;
+  align-items: center;
+}
 
 .vertical-margin {
   margin: 1rem 0;

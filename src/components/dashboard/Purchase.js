@@ -1,28 +1,39 @@
 import React from 'react'
+import axios from 'axios'
 
-const Purchase = ({ title, description }) => {
+import StoryCard from '../StoryCard'
 
-  return (
-    <div className="columns">
 
-      {/* this will be section for displaying the image/video of the content */}
-      <div className="column col-3 bg-gray">
-        <figure className="figure">
-          <img className="img-responsive" src="https://picturepan2.github.io/spectre/img/osx-el-capitan.jpg"
-            alt="macOS Yosemite Wallpaper"/>
-          <figcaption className="figure-caption text-center">macOS Yosemite wallpaper</figcaption>
-        </figure>
-      </div>
-      <div className="column col-6">
-        <h2 className="title h4 text-left">{title}</h2>
-        <p>{description}</p>
-      </div>
-      <div className="column col-3">
-        <button className="btn bg-secondary input-group-btn">Buy</button>
-        <button className="btn bg-primary input-group-btn">Sell</button>
-      </div>
-    </div>
-  )
+class Purchase extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      stories: null
+    }
+  }
+
+
+  componentDidMount(){
+    console.log('did mount')
+    axios.get('/api/stories')
+      .then(response => this.setState({ stories: response.data }))
+      .catch(err => console.log(err))
+  }
+
+
+  handleClick(e) {
+    this.setState({ selected: e.target.name })
+  }
+
+
+  render() {
+    const { stories } = this.state
+    const options = { classes: 'box-shadow' }
+    if (!stories) return <div className="loading loading-lg"></div>
+    return (
+      stories.map( story=> (<article key={story._id} className="bg-gray"><StoryCard { ...story } options={options}/></article>))
+    )
+  }
 }
 
 export default Purchase

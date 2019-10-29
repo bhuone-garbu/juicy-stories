@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
 import Home from './components/Home'
+import Stories from './components/Stories'
 
 class App extends React.Component {
   constructor(){
@@ -22,7 +23,7 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home}/>
-          {/* <Route path="/stories" component={Stories}/> */}
+          <Route path="/stories" component={Stories}/>
           <Route path="/register" component={SignUp}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/login" component={Login}/>
