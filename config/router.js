@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const stories = require('../controllers/stories')
-const users = require('../controllers/auth')
+const auth = require('../controllers/auth')
 const offer = require('../controllers/offers')
+const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
 
 // Handling getteing all stories
@@ -18,11 +19,11 @@ router.route('/stories/:id')
 
 // Handling register of user - /register
 router.route('/register')
-  .post(users.register)
+  .post(auth.register)
 
 // Handling user login - /login
 router.route('/login')
-  .post(users.login)
+  .post(auth.login)
 
 
 // Handling create offer - /offers
@@ -43,6 +44,11 @@ router.route('/offers/:id/messages')
 // Getting All Messages
 router.route('/offers/:id/messages')
   .get(secureRoute, offer.allMessages)
+
+
+// Get the user detail 
+router.route('/users/:id')
+  .get(secureRoute, users.show)
 
 
 module.exports = router

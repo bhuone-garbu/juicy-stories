@@ -1,6 +1,7 @@
 import React from 'react'
 
 // all local imports
+import Helper from '../../lib/helper'
 import Purchase from './Purchase'
 import OfferRequest from './OfferRequest'
 
@@ -8,7 +9,8 @@ class Dashboard extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: 'purchases'
+      selected: 'purchases',
+      userDetail: null
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -19,15 +21,22 @@ class Dashboard extends React.Component {
     this.setState({ selected: e.target.name })
   }
 
+  componentDidMount(){
+    Helper.getUserDetail()
+      .then(userDetail => this.setState({ userDetail }))
+      .catch(err => err )
+  }
+
 
   render() {
-    const { selected } = this.state
+    const { selected, userDetail } = this.state
     return (
       <section className="container">
         <div className="empty">
           <figure className="empty-icon avatar avatar-xxl">
             <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
           </figure>
+          {userDetail && <p className="empty-title h5">{userDetail.firstName}&nbsp;{userDetail.lastName}</p>}
         </div>
 
         {/* this is just for toggling */}

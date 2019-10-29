@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import StoryCard from '../StoryCard'
-
+import StoryAction from '../StoryAction'
 
 class Purchase extends React.Component {
   constructor() {
@@ -29,10 +29,19 @@ class Purchase extends React.Component {
 
   render() {
     const { stories } = this.state
-    const options = { classes: 'box-shadow' }
     if (!stories) return <div className="loading loading-lg"></div>
     return (
-      stories.map( story=> (<article key={story._id} className="bg-gray"><StoryCard { ...story } options={options}/></article>))
+      stories.map( story=> (
+        <article key={story._id} className="columns bg-gray box-shadow">
+          <div className="column col-9">
+            <StoryCard { ...story }/>
+          </div>
+          <div className="column col-3 v-center h-center">
+            <StoryAction story={story}/>
+          </div>
+
+        </article>
+      ))
     )
   }
 }
