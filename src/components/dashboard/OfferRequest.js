@@ -14,7 +14,6 @@ class OfferRequest extends React.Component {
     }
   }
 
-
   componentDidMount() {
     axios.get('/api/offers', { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
       .then(response => this.setState({ offers: response.data }))
