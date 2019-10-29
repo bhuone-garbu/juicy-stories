@@ -67,7 +67,14 @@ class Navbar extends React.Component {
                       <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
                     </figure>
                   </Link>
-                  <button type="submit" className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>
+                  <Link to="/dashboard">
+                    <button className="btn tooltip bg-warning input-group-btn" data-tooltip="Add a story">
+                      <i className="icon icon-upload text-secondary"/>
+                    </button>
+                    
+                    {/* <i id="uploadIcon" className="fas fa-upload "/> */}
+                  </Link>
+                  <button className="btn bg-secondary input-group-btn" onClick={this.handleLogout}>Logout</button>
                 </>
               }
             </section>

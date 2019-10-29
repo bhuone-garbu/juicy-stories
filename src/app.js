@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './styles/style.scss'
 
-import SignUp from './components/SignupForm'
+import SignUp from './components/Signup'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
