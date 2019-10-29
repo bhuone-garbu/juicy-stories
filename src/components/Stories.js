@@ -22,7 +22,6 @@ class Stories extends React.Component {
 
   render() {
     const data = this.state.stories
-    console.log(data)
     return (
       <div>
         {!data && <div className="loading loading-lg"></div>}
