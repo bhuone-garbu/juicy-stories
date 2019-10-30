@@ -13,7 +13,7 @@ router.route('/stories')
 // Handling getting one strory
 router.route('/stories/:id')
   .get(stories.show)
-  .delete(stories.deleteStory)
+  .delete(secureRoute,stories.deleteStory)
   .put(secureRoute, stories.edit)
 
 

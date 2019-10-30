@@ -3,7 +3,7 @@ import React from 'react'
 const StoryForm = ({ title, description, contentLink , minimumPrice, category, handleSubmit, handleChange }) => (
   
   <section className="tile-centered">
-    <div className="card center col-6">
+    <div className="card bg-gray">
       <div className="form-group">
         <label className="form-label" htmlFor="title">Title</label>
         <input onChange={handleChange} className="form-input input-lg" value={title} type="text" id="title" placeholder="Title" 

@@ -2,8 +2,8 @@ import React from 'react'
 
 import Helper from '../../lib/helper'
 import OfferFromModal from '../modals/OfferFormModal'
-
-import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
+// import Auth from '../../lib/auth'
 
 // this component will be context aware to display - buy or sell option
 // depending on who the user is logged in
@@ -36,6 +36,7 @@ class StoryAction extends React.Component {
             {/* <a className="btn btn-primary" href="#example-modal-2">Open small size Modal</a> */}
             <a href={`#modal${story._id}`}><button className="btn bg-secondary input-group-btn">Make an offer</button></a>
             <OfferFromModal story={story}/>
+            <Link to={`/stories/${story._id}/edit`}><button className="btn btn-warning" id="editBtn">Edit Story</button></Link>
           </>
         }
         {isOwner &&

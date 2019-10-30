@@ -16,6 +16,7 @@ import Dashboard from './components/dashboard/Dashboard'
 
 import Stories from './components/story/Stories'
 import StoryNew from './components/story/StoryNew'
+import StoryEdit from './components/story/StoryEdit'
 
 class App extends React.Component {
 
@@ -25,6 +26,7 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home}/>
+          <SecureRoute path="/stories/:Id/edit" component={StoryEdit}/>
           <SecureRoute path="/stories/new" component={StoryNew}/>
           <Route path="/stories" component={Stories}/>
           <Route path="/register" component={SignUp}/>
