@@ -26,9 +26,9 @@ class Stories extends React.Component {
     const { stories } = this.state
     if (!stories) return <div className="loading loading-lg"></div>
     return (
-      stories.map( story=> (
-        <Story key={story._id} story={story}/>
-      ))
+      <section className="container">
+        {stories.map( story=> (<Story key={story._id} story={story}/>))}
+      </section>
     )
   }
 

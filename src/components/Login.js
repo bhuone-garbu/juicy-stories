@@ -40,24 +40,31 @@ class Login extends React.Component {
   render() {
     const data = this.state.data
     return (
-      <div className="card bg-gray">
-        <div className="card-header">
-          <div className="card-body">
-            <div className="form-group"></div>
-            <label className="form-label" htmlFor="email">Email</label>
-            <input className="form-input input-lg" type="text" value={data.email} id="email" placeholder="Email"
-              onChange={this.handleChange} />
+      <section className="container">
+        <div className="columns h-center">
+          <div className="col-md-12 col-8">
+            <div className="card bg-gray">
+              <div className="card-header">
+                <h2 className="h2 text-center">Log in</h2>
+                <div className="card-body">
+                  <div className="form-group"></div>
+                  <label className="form-label" htmlFor="email">Email</label>
+                  <input className="form-input input-lg" type="text" value={data.email} id="email" placeholder="Email"
+                    onChange={this.handleChange} />
 
-            <label className="form-label" htmlFor="password">Password</label>
-            <input className="form-input input-lg" type="password" value={data.password} id="password" placeholder="Password"
-              onChange={this.handleChange}/>
+                  <label className="form-label" htmlFor="password">Password</label>
+                  <input className="form-input input-lg" type="password" value={data.password} id="password" placeholder="Password"
+                    onChange={this.handleChange}/>
 
-            <div className="card-footer text-center">
-              <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button></Link>
+                  <div className="card-footer text-center">
+                    <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button></Link>
+                  </div>
+                </div> 
+              </div>
             </div>
-          </div> 
+          </div>
         </div>
-      </div>
+      </section>
 
     )
   }

@@ -70,22 +70,19 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         offerPrice: 800,
         buyer: stories[0].postedBy,
         seller: stories[1].postedBy,
-        story: stories[0],
-        status: 'Offer sent'
+        story: stories[0]
       },
       {
         offerPrice: 600,
         buyer: stories[0].postedBy,
         seller: stories[1].postedBy,
-        story: stories[1],
-        status: 'Offer sent'
+        story: stories[1]
       },
       {
         offerPrice: 400,
         buyer: stories[1].postedBy,
         seller: stories[0].postedBy,
-        story: stories[2],
-        status: 'Offer sent'
+        story: stories[2]
       }])
     })
     .then(offers => {
