@@ -43,7 +43,7 @@ class MessagesCard extends React.Component {
 
   render() {
     const messages = this.state.data
-    console.log(this.state.value)
+    console.log(this.state)
     return (
       <div>
         <section>
@@ -61,7 +61,7 @@ class MessagesCard extends React.Component {
                         </figure>
                       </div>
                       <div className="tile-content">
-                        <p className="tile-title text-bold">{message.firstName} {message.lastName}</p>
+                        <p className="tile-title text-bold">{message.user.firstName} {message.user.lastName}</p>
                         <div>{message.text}</div>
                       </div>
                     </div>
