@@ -9,6 +9,7 @@ const secureRoute = require('../lib/secureRoute')
 router.route('/stories')
   .get(stories.index)
   .post(secureRoute, stories.create)
+
   
 // Handling getting one strory
 router.route('/stories/:id')
