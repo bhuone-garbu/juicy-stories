@@ -48,8 +48,8 @@ function deleteStory(req, res) {
       if (!story) {
         return res.status(404).json({ message: 'No story' })
       }
-      if (story.postedBy !== req.currentUser) {
-        return res.status(401).json({ message: 'Not Authorized' })
+      if (!story.postedBy._id.equals(req.currentUser._id)) {
+        return res.status(404).json({ message: 'not Authorized ' })
       }
       story.remove()
       res.sendStatus(204)

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Helper from '../../lib/helper'
 import OfferFromModal from '../modals/OfferFormModal'
-
+import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
 
 // this component will be context aware to display - buy or sell option
@@ -39,6 +39,7 @@ class StoryAction extends React.Component {
         {!isOwner &&
           <>
             {offerMade && <><i className="far fa-thumbs-up"/>Offer sent</>}
+            <Link to={`/stories/${story._id}/edit`}><button className="btn btn-warning" id="editBtn">Edit Story</button></Link>
             {!offerMade &&
               <>
                 <p>Minium accepted price</p>

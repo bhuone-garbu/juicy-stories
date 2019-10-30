@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import User from '../../lib/auth'
+import Auth from '../../lib/auth'
 import StoryForm from './StoryForm'
 
 
 
-class StoryNew extends React.Component {
+class StoryEdit extends React.Component {
   constructor(){
 
     super()
@@ -22,17 +22,27 @@ class StoryNew extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  
-  
+  // getting data to display for edit
+  componentDidMount(){
+    const Id = this.props.match.params.Id
+    axios.get(`/api/stories/${Id}`)
+      .then(res => {
+        this.setState({ data: res.data })
+      })
+    
+  }
+
+
   handleChange(e) {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     const data = { ... this.state.data, [e.target.id]: e.target.value }
     this.setState({ data })  
   }
 
   handleSubmit(){
-    axios.post('/api/stories', this.state.data ,{
-      headers: { Authorization: `Bearer ${User.getToken()}` }
+    const Id = this.props.match.params.Id
+    axios.put(`/api/stories/${Id}`, this.state.data ,{
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(() => this.props.history.push('/stories'))
     
@@ -44,8 +54,8 @@ class StoryNew extends React.Component {
     
     return (
       <>
-        <div className="card mt-2 p-centered col-8" >
-
+        
+        <div className="card col-8 p-centered mt-2">
           <StoryForm
             { ...data }
           
@@ -60,4 +70,4 @@ class StoryNew extends React.Component {
 }
 
 
-export default StoryNew
+export default StoryEdit
