@@ -43,11 +43,11 @@ class MessagesCard extends React.Component {
 
   render() {
     const messages = this.state.data
-
+    console.log(this.state.value)
     return (
       <div>
         <section>
-          <div className="column col-6 col-xs-12">
+          <div className="column col-6 p-centered col-xs-12">
             <div className="panel">
               <div className="panel-header">Messages</div>
               <div className="panel-body">

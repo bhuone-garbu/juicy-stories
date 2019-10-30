@@ -32,7 +32,7 @@ class SignUp extends React.Component {
     e.preventDefault()
 
     axios.post('api/register', this.state.data)
-      .then(res => console.log(res))
+      .then(() => this.props.history.push('/dashboard'))
       .catch(err => console.log(err))
 
   }
