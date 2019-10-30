@@ -10,7 +10,8 @@ class MessagesCard extends React.Component {
 
     this.state = {
       data: null,
-      value: ''
+      value: '',
+      isUpdated: false
     }
     
     this.handleChange = this.handleChange.bind(this)
@@ -32,7 +33,7 @@ class MessagesCard extends React.Component {
     axios.post(`/api/offers/${this.props.offerId}/messages`, JSONMessaage, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => console.log(res.data))
+      .then(res => this.setState( {data: res.data.message }))
       .catch(err => console.error(err))
   }
 
@@ -43,7 +44,7 @@ class MessagesCard extends React.Component {
 
   render() {
     const messages = this.state.data
-    console.log(this.state)
+    console.log('data is',this.state.data)
     return (
       <div>
         <section>
