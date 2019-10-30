@@ -1,7 +1,9 @@
 import React from 'react'
 
-import Auth from '../../lib/auth'
 import Helper from '../../lib/helper'
+import OfferFromModal from '../modals/OfferFormModal'
+
+import Auth from '../../lib/auth'
 
 // this component will be context aware to display - buy or sell option
 // depending on who the user is logged in
@@ -12,7 +14,7 @@ class StoryAction extends React.Component {
     this.state = {
       isOwner: false
     }
-    this.currentUserId = Auth.getPayload().sub
+    
   }
 
   componentDidMount() {
@@ -31,15 +33,18 @@ class StoryAction extends React.Component {
           <>
             <p>Minium accepted price</p>
             <h3 className="inline-block h3">{story.minimumPrice} JC</h3>
-            <button className="btn bg-secondary input-group-btn">Make an offer</button>
+            {/* <a className="btn btn-primary" href="#example-modal-2">Open small size Modal</a> */}
+            <a href={`#modal${story._id}`}><button className="btn bg-secondary input-group-btn">Make an offer</button></a>
+            <OfferFromModal story={story}/>
           </>
         }
         {isOwner &&
           <>
-            <i className="h3 inline-block icon icon-link icon-3x"/>
+            <i className="h3 inline-block icon icon-link icon-3x" />
             <p>Navigate to content</p>
           </>
         }
+        
 
       </div>
     )

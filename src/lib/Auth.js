@@ -1,15 +1,16 @@
 class Auth {
 
   static setToken(token){
-    localStorage.setItem('token', token)
+    // this is better than generic token
+    localStorage.setItem('juicy:token', token)
   }
 
   static getToken() {
-    return localStorage.getItem('token')
+    return localStorage.getItem('juicy:token')
   }
 
   static logout() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('juicy:token')
   }
 
   static getPayload() {

@@ -1,8 +1,14 @@
 import React from 'react'
 import axios from 'axios'
+<<<<<<< HEAD
 import StoryCard from './StoryCard'
 import StoryAction from './StoryAction'
 // import MessageCard from '../../components/MessagesCard'
+=======
+
+// local import
+import Story from './Story'
+>>>>>>> development
 
 
 class Stories extends React.Component {
@@ -10,7 +16,7 @@ class Stories extends React.Component {
     super()
 
     this.state = {
-      stories: []
+      stories: null
     }
 
   }
@@ -26,16 +32,9 @@ class Stories extends React.Component {
     const { stories } = this.state
     if (!stories) return <div className="loading loading-lg"></div>
     return (
-      stories.map( story=> (
-        <article key={story._id} className="columns bg-gray box-shadow v-margin">
-          <div className="column col-9">
-            <StoryCard { ...story }/>
-          </div>
-          <div className="column col-3 v-center h-center">
-            <StoryAction story={story}/>
-          </div>
-        </article>
-      ))
+      <section className="container">
+        {stories.map( story=> (<Story key={story._id} story={story}/>))}
+      </section>
     )
   }
 

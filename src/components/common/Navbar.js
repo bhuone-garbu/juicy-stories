@@ -1,8 +1,8 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
-import logo from '../assets/logo2.png'
+import logo from '../../assets/logo2.png'
 import { Link, withRouter } from 'react-router-dom'
-import Auth from '../lib/auth'
+import Auth from '../../lib/auth'
 
 
 class Navbar extends React.Component {
@@ -67,7 +67,7 @@ class Navbar extends React.Component {
                       <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
                     </figure>
                   </Link>
-                  <Link to="/dashboard">
+                  <Link to="/stories/new">
                     <button className="btn tooltip bg-warning input-group-btn" data-tooltip="Add a story">
                       <i className="icon icon-upload text-secondary"/>
                     </button>
