@@ -32,7 +32,7 @@ class SalesCard extends React.Component {
                 <th>Story</th>
                 <th>Price</th>
                 <th>Buyer</th>
-                <th>Date Of Purchase</th>
+                <th>Date of Purchase</th>
               </tr>
             </thead>
             <tbody>

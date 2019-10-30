@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import StoryCard from './StoryCard'
-import StoryAction from './StoryAction'
+
+// local import
+import Story from './Story'
 
 
 class Stories extends React.Component {
@@ -9,7 +10,7 @@ class Stories extends React.Component {
     super()
 
     this.state = {
-      stories: []
+      stories: null
     }
 
   }
@@ -26,15 +27,7 @@ class Stories extends React.Component {
     if (!stories) return <div className="loading loading-lg"></div>
     return (
       stories.map( story=> (
-        <article key={story._id} className="columns bg-gray box-shadow v-margin">
-          <div className="column col-9">
-            <StoryCard { ...story }/>
-          </div>
-          <div className="column col-3 v-center h-center">
-            <StoryAction story={story}/>
-          </div>
-
-        </article>
+        <Story key={story._id} story={story}/>
       ))
     )
   }

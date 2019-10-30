@@ -14,10 +14,6 @@ import MessagesCard from './components/MessagesCard'
 import StoryNew from './components/story/StoryNew'
 
 class App extends React.Component {
-  constructor(){
-    super()
-    this.state = {}
-  }
 
   render(){
     return (
