@@ -12,7 +12,7 @@ function index(req, res) {
     .catch(err => res.status(500).json(err))
 }
 
-// create an for offer - /offers
+// create an offer - /offers
 function create(req, res) {
   Offer
     .create(req.body)
@@ -27,7 +27,7 @@ function create(req, res) {
 }
 
 
-// making request for one offer -/offers/Id
+// making request for one offer -/offers/:id
 function show(req, res) {
   Offer
     .findById(req.params.id)
@@ -39,7 +39,7 @@ function show(req, res) {
 }
 
 
-// update an offer /offers/id
+// update an offer /offers/:id
 function update(req, res) {
   Offer.findById(req.params.id)
     .then(offer => {
@@ -57,7 +57,7 @@ function update(req, res) {
     })
 }
 
-// Create Messages On Offer - /offers/:id/messages
+// Create Messages nn Offer - /offers/:id/messages
 function messagesCreate(req, res) {
   Offer.findById(req.params.id)
     .then(offer => {
@@ -66,10 +66,16 @@ function messagesCreate(req, res) {
       return offer.save()
     })
     .then(messages => res.status(201).json(messages))
-    .catch(err => res.json(err))
+    .catch(err => {
+      if (err.name === 'ValidationError') {
+        res.status(422).json(err)
+      } else {
+        res.status(500).json(err)
+      }
+    })
 }
 
-// Show All Messages - /offers/:id/messages
+// Show all Messages - /offers/:id/messages
 function allMessages(req, res) {
   Offer.findById(req.params.id) 
     .then(offer => {

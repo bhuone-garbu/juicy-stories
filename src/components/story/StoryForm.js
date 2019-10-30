@@ -1,5 +1,6 @@
 import React from 'react'
 
+// this is the form that will be used to edit/add story
 const StoryForm = ({ title, description, contentLink , minimumPrice, category, handleSubmit, handleChange }) => (
   
   <section className="tile-centered">

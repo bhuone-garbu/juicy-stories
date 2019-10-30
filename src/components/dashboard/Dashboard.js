@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
           <figure className="empty-icon avatar avatar-xxl">
             <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
           </figure>
-          {userDetail && <p className="empty-title h5">{userDetail.firstName}&nbsp;{userDetail.lastName}</p>}
+          {userDetail && <p className="empty-title h5">{userDetail.firstName} {userDetail.lastName}</p>}
         </div>
 
         {/* this is just for toggling */}

@@ -32,25 +32,23 @@ class OfferFromModal extends React.Component {
   handleSubmit(e){
     const name = e.target.name // intentionally not decontructing because need to prevent the page reload
     if (name === 'confirm' ) this.setState({ askConfirm: true })
-    if (name === 'submit') {
-      e.preventDefault()
-      this.submitAnOffer() //
-    }
+    if (name === 'submit') this.submitAnOffer(e)
   }
-
-
-  submitAnOffer() {
-    const { postedBy } = this.props.story
+  
+  
+  submitAnOffer(e) {
+    e.preventDefault()
+    const { story: { postedBy }, handleOfferSubmit } = this.props
     axios.post('/api/offers', {
       offerPrice: this.state.offerPrice,
-      buyer: postedBy,
+      seller: postedBy,
       story: this.props.story._id,
-      seller: Auth.getPayload().sub, //seller becomes the current logged in user
-      status: 'Offer sent'
+      buyer: Auth.getPayload().sub //seller becomes the current logged in user
     }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(() => {
+        handleOfferSubmit()
         this.props.history.go(-1)
       })
       .catch(err => console.error(err))

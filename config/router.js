@@ -29,10 +29,10 @@ router.route('/login')
 // Handling create offer - /offers
 router.route('/offers')
   .post(secureRoute, offer.create)
-  .get(secureRoute,offer.index)
+  .get(offer.index)
 
 
-// Handling singel offer - /offers/:id 
+// Handling single offer - /offers/:id 
 router.route('/offers/:id')
   .get(offer.show)
   .put(secureRoute, offer.update)

@@ -12,41 +12,65 @@ class StoryAction extends React.Component {
   constructor() {
     super()
     this.state = {
-      isOwner: false
+      isOwner: false, 
+      offerMade: false // flag to know if current user has already made the offer on the story or not
     }
-    
+
+    this.handleOfferSubmit = this.handleOfferSubmit.bind(this)
   }
 
   componentDidMount() {
     // this is the user id from the mongoose database
-    const { story } = this.props.story
-    this.setState({ isOwner: Helper.isUserOwner(story) })
+    const { story, isCurrentUserBuyer } = this.props
+    this.setState({ isOwner: Helper.isUserOwner(story), offerMade: isCurrentUserBuyer })
+  }
+
+  // this is the event handler that will be thrown when the offer has been SUCCESSFULLY created from the modal
+  handleOfferSubmit(){
+    this.setState({ offerMade: true })
   }
 
 
   render() {
     const { story } = this.props
-    const { isOwner } = this.state
+    const { isOwner, offerMade } = this.state
     return (
       <div className="flex-column v-center">
         {!isOwner &&
           <>
+<<<<<<< HEAD
             <p>Minium accepted price</p>
             <h3 className="inline-block h3">{story.minimumPrice} JC</h3>
             {/* <a className="btn btn-primary" href="#example-modal-2">Open small size Modal</a> */}
             <a href={`#modal${story._id}`}><button className="btn bg-secondary input-group-btn">Make an offer</button></a>
             <OfferFromModal story={story}/>
             <Link to={`/stories/${story._id}/edit`}><button className="btn btn-warning" id="editBtn">Edit Story</button></Link>
+=======
+            {offerMade && <><i className="far fa-thumbs-up"/>Offer sent</>}
+            {!offerMade &&
+              <>
+                <p>Minium accepted price</p>
+                <h3 className="inline-block h3">{story.minimumPrice} JC</h3>
+                {/* <a className="btn btn-primary" href="#example-modal-2">Open small size Modal</a> */}
+
+                {/* protecting the modal and rendering only if the user was logged in */}
+                {Auth.isAuthenticated() && <OfferFromModal story={story} handleOfferSubmit={this.handleOfferSubmit}/>}
+                
+                {/* redirect to login if the user attempt to make an offer*/}
+                <a href={Auth.isAuthenticated() ? `#modal${story._id}` : '/login'}>
+                  <button className="btn bg-secondary input-group-btn">Make an offer</button>
+                </a>
+              </>
+            }
+>>>>>>> development
           </>
         }
         {isOwner &&
           <>
-            <i className="h3 inline-block icon icon-link icon-3x" />
-            <p>Navigate to content</p>
+            <i className="h3 inline-block icon icon-link icon-3x"/>
+            <p>You own the story</p>
           </>
         }
-        
-
       </div>
     )
   }
