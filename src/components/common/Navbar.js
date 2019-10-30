@@ -63,13 +63,13 @@ class Navbar extends React.Component {
       <div className="bg-primary">
         <div className="container">
           <header className="navbar md-padding">
-            <section className="navbar-section">
+            <div className="navbar-section">
               <Link to="/" className="navbar-brand mr-4">
                 <img className="img-responsive" src={logo} width="100px" alt="logo" />
               </Link>
-            </section>
+            </div>
             
-            <section className="navbar-center">
+            <div className="navbar-center">
               <form>
                 <div className="input-group input-inline">
                   <select onChange={this.handleChange} value={category} name="category">
@@ -89,9 +89,9 @@ class Navbar extends React.Component {
                     onClick={this.handleSearch}>Search</button>
                 </div>
               </form>
-            </section>
+            </div>
               
-            <section className="navbar-section">
+            <div className="navbar-section">
               {!isAuthenticated &&
                 <>
                   <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>
@@ -101,24 +101,29 @@ class Navbar extends React.Component {
               {isAuthenticated &&
                 <>
                   <Link to="/dashboard">
-                    <figure className="avatar avatar-lg">
+                    <figure className="avatar avatar-lg tooltip tooltip-bottom" data-tooltip="View dashboard">
                       <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
                     </figure>
                   </Link>
                   <Link to="/stories/new">
-                    <button className="btn tooltip bg-warning input-group-btn" data-tooltip="Add a story">
+                    <button className="btn bg-warning input-group-btn move tooltip tooltip-bottom" data-tooltip="Add a story">
                       <i className="icon icon-upload text-secondary"/>
                     </button>
                     
                     {/* <i id="uploadIcon" className="fas fa-upload "/> */}
                   </Link>
-                  <button className="btn tooltip bg-secondary input-group-btn" data-tooltip="Logout? 🥺" onClick={this.handleLogout}>
+                  <button className="btn bg-secondary input-group-btn tooltip tooltip-bottom" data-tooltip="Logout? 🥺" onClick={this.handleLogout}>
                     <i className="icon icon-shutdown"/>Logout
                   </button>
                 </>
               }
-            </section>
+            </div>
           </header>
+          <div className="h-center bottom-padding">
+            <Link to="/stories" className="inline-block text-warning input-group-btn tooltip tooltip-bottom" data-tooltip="Browse all juicy stories">
+              <span className="h3 text-bold">Browse all</span>
+            </Link>
+          </div>
         </div>
       </div>
     )

@@ -21,7 +21,8 @@ class Stories extends React.Component {
   componentDidUpdate(prevProps) {
     // console.log(this.props.location.search)
     if (this.props.location.search !== prevProps.location.search) {
-      this.refresh()
+      this.setState({ allStories: null })
+      setTimeout(() => this.refresh(), 300) // faking it with the timeout because it is too quick lol - 🤫
     }
   }
 
