@@ -48,13 +48,8 @@ function deleteStory(req, res) {
       if (!story) {
         return res.status(404).json({ message: 'No story' })
       }
-<<<<<<< HEAD
       if (!story.postedBy._id.equals(req.currentUser._id)) {
         return res.status(404).json({ message: 'not Authorized ' })
-=======
-      if (story.postedBy !== req.currentUser) {
-        return res.status(401).json({ message: 'Not Authorized' })
->>>>>>> development
       }
       story.remove()
       res.sendStatus(204)
@@ -76,13 +71,8 @@ function edit(req, res) {
       if (!story) {
         return res.status(404).json({ message: 'No story' })
       }
-<<<<<<< HEAD
       if (!story.postedBy._id.equals(req.currentUser._id)) {
         return res.status(404).json({ message: 'not Authorized 2' })
-=======
-      if (story.postedBy !== req.currentUser) {
-        return res.status(401).json({ message: 'Not Authorized ' })
->>>>>>> development
       }
       story.set(req.body)
       story.save()
