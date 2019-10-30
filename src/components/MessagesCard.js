@@ -4,27 +4,57 @@ import axios from 'axios'
 import Auth from '../lib/auth'
 
 
+
 class MessagesCard extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      messages: []
+      data: null,
+      value: ''
+      
 
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSend = this.handleSend.bind(this)
   }
 
   componentDidMount() {
-    axios.get(`/api/offers/${this.props.match.params.id}/messages`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+    axios.get(`/api/offers/${this.props.offerId}/messages`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
       .then(res => {
-        this.setState({ messages: res.data })
+        this.setState({ data: res.data })
       })
+      
   }
 
-  render() {
-    const messages = this.state.messages
 
-    if (messages === 0) return <div className="loading loading-lg"></div>
+  handleSend() {
+    const JSONMessaage = {
+      'text': this.state.value,
+      'user': Auth.getPayload().sub
+    }
+    axios.post(`/api/offers/${this.props.offerId}/messages`, JSONMessaage , {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err))
+  }
+
+  handleChange(e) {
+    this.setState({ value: e.target.value })
+    console.log(this.state.value)
+  }
+
+
+
+  render() {
+    const messages = this.state.data
+    
+    if (!messages) return <div className="loading loading-lg"></div>
+    const firstName = messages[0].user.firstName
+    const lastName = messages[0].user.lastName
+
+
     return (
       <div>
         <section>
@@ -42,15 +72,15 @@ class MessagesCard extends React.Component {
                         </figure>
                       </div>
                       <div className="tile-content">
-                        <p className="tile-title text-bold">System Admin</p>
+                        <p className="tile-title text-bold">{firstName} {lastName}</p>
                         <div>{message.text}</div>
                       </div>
                     </div>
                   ))}
                 <br></br>
                 <div className="input-group">
-                  <input className="form-input" type="text" placeholder="Hello"></input>
-                  <button className="btn btn-primary input-group-btn">Send</button>
+                  <input onChange={this.handleChange} className="form-input" id="messageSend" type="text" placeholder="Hello" ></input>
+                  <button className="btn btn-primary input-group-btn" onClick={this.handleSend}>Send</button>
                 </div>
               </div>
             </div>

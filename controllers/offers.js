@@ -78,6 +78,7 @@ function messagesCreate(req, res) {
 // Show all Messages - /offers/:id/messages
 function allMessages(req, res) {
   Offer.findById(req.params.id)
+    .populate('message.user')
     .then(offer => {
       if (!offer) return res.status(404).json({ message: 'no offers' })
       console.log(offer.message)

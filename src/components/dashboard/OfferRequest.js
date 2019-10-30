@@ -4,6 +4,7 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import StoryCard from '../story/StoryCard'
 import OfferAction from '../dashboard/OfferAction'
+import MessagesCard from '../../components/MessagesCard'
 
 class OfferRequest extends React.Component {
 
@@ -35,6 +36,7 @@ class OfferRequest extends React.Component {
             <OfferAction offerId={offer._id}/>
           </div>
         </div>
+        <MessagesCard offerId={offer._id}/>
       </article>)
     )
   }
