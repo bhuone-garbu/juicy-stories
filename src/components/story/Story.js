@@ -5,11 +5,6 @@ import StoryAction from './StoryAction'
 
 // this is wrapper to hold and control all the components related to a story - one story
 class Story extends React.Component {
-
-
-  handleClick({ target: { name, value } }){
-
-  }
   
   render(){
     const { story, isCurrentUserBuyer } = this.props
