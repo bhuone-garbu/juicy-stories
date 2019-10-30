@@ -1,14 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-<<<<<<< HEAD
 import StoryCard from './StoryCard'
 import StoryAction from './StoryAction'
 // import MessageCard from '../../components/MessagesCard'
-=======
 
 // local import
 import Story from './Story'
->>>>>>> development
 
 
 class Stories extends React.Component {
