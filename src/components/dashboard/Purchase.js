@@ -3,22 +3,22 @@ import axios from 'axios'
 
 import StoryCard from '../story/StoryCard'
 import StoryAction from '../story/StoryAction'
+import Auth from '../../lib/auth'
 
 class Purchase extends React.Component {
   constructor() {
     super()
     this.state = {
-      stories: null
+      offers: null
     }
   }
 
 
   componentDidMount(){
     // just faking with the timeout so that it's not too responsive
-    axios.get('/api/stories')
-      .then(response => this.setState({ stories: response.data }))
+    axios.get(`/api/offers?buyer=${Auth.getPayload().sub}`)
+      .then(response => this.setState({ offers: response.data }))
       .catch(err => console.log(err))
-    
   }
 
 
@@ -28,16 +28,16 @@ class Purchase extends React.Component {
 
 
   render() {
-    const { stories } = this.state
-    if (!stories) return <div className="loading loading-lg"></div>
+    const { offers } = this.state
+    if (!offers) return <div className="loading loading-lg"></div>
     return (
-      stories.map( story=> (
-        <article key={story._id} className="columns bg-gray box-shadow v-margin">
+      offers.map( offer=> (
+        <article key={offer.story._id} className="columns bg-gray box-shadow v-margin">
           <div className="column col-9">
-            <StoryCard { ...story }/>
+            <StoryCard { ...offer.story }/>
           </div>
           <div className="column col-3 v-center h-center">
-            <StoryAction story={story}/>
+            <StoryAction story={offer.story}/>
           </div>
 
         </article>

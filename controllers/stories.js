@@ -6,7 +6,7 @@ function index(req, res) {
   Story
     .find(req.query)
     .then(stories => res.status(200).json(stories))
-    .catch(err => res.status(505).json(err))
+    .catch(err => res.status(500).json(err))
 }
 
 // making request for one story -/story/Id
@@ -65,14 +65,14 @@ function deleteStory(req, res) {
 
 // edit a story /story/id
 function edit(req, res) {
-  req.body.postedBy = req.currentUser
   Story.findById(req.params.id)
     .then(story => {
       if (!story) {
         return res.status(404).json({ message: 'No story' })
       }
-      if (story.postedBy !== req.currentUser) {
-        return res.status(401).json({ message: 'Not Authorized ' })
+
+      if (!story.postedBy._id.equals(req.currentUser._id)) {
+        return res.status(401).json({ message: 'Not Authorized' })
       }
       story.set(req.body)
       story.save()

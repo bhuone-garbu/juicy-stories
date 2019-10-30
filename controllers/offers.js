@@ -1,10 +1,10 @@
 const Offer = require('../models/Offer')
+const QueryHelper = require('../lib/queryHelper')
 
 function index(req, res) {
-  // console.log(req.query)
-  // query put in here for making broader requests to the MongoDB
+  
   Offer
-    .find(req.query)
+    .find(QueryHelper.buildParamQuery(req.query))
     .populate('story')
     .populate('seller')
     .populate('buyer')
@@ -62,7 +62,7 @@ function messagesCreate(req, res) {
   Offer.findById(req.params.id)
     .then(offer => {
       if (!offer) res.status(404).json({ error: 'Offer Not Found' })
-      offer.message.push(req.body)
+      offer.message.push({ ...req.body, user: req.currentUser })
       return offer.save()
     })
     .then(messages => res.status(201).json(messages))

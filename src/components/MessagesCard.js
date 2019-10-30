@@ -4,7 +4,6 @@ import axios from 'axios'
 import Auth from '../lib/auth'
 
 
-
 class MessagesCard extends React.Component {
   constructor() {
     super()
@@ -12,9 +11,8 @@ class MessagesCard extends React.Component {
     this.state = {
       data: null,
       value: ''
-      
-
     }
+    
     this.handleChange = this.handleChange.bind(this)
     this.handleSend = this.handleSend.bind(this)
   }
@@ -24,16 +22,14 @@ class MessagesCard extends React.Component {
       .then(res => {
         this.setState({ data: res.data })
       })
-      
   }
 
 
   handleSend() {
     const JSONMessaage = {
-      'text': this.state.value,
-      'user': Auth.getPayload().sub
+      'text': this.state.value
     }
-    axios.post(`/api/offers/${this.props.offerId}/messages`, JSONMessaage , {
+    axios.post(`/api/offers/${this.props.offerId}/messages`, JSONMessaage, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => console.log(res.data))
@@ -42,18 +38,11 @@ class MessagesCard extends React.Component {
 
   handleChange(e) {
     this.setState({ value: e.target.value })
-    console.log(this.state.value)
   }
-
 
 
   render() {
     const messages = this.state.data
-    
-    if (!messages) return <div className="loading loading-lg"></div>
-    const firstName = messages[0].user.firstName
-    const lastName = messages[0].user.lastName
-
 
     return (
       <div>
@@ -72,7 +61,7 @@ class MessagesCard extends React.Component {
                         </figure>
                       </div>
                       <div className="tile-content">
-                        <p className="tile-title text-bold">{firstName} {lastName}</p>
+                        <p className="tile-title text-bold">{message.firstName} {message.lastName}</p>
                         <div>{message.text}</div>
                       </div>
                     </div>
