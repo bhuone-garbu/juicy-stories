@@ -4,22 +4,43 @@ import axios from 'axios'
 import Auth from '../lib/auth'
 
 
+
 class MessagesCard extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      messages: []
+      messages: [],
+      messageSent: ''
 
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSend = this.handleSend.bind(this)
   }
 
   componentDidMount() {
-    axios.get(`/api/offers/${this.props.match.params.id}/messages`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+    axios.get(`/api/offers/${this.props.offerId}/messages`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
       .then(res => {
         this.setState({ messages: res.data })
       })
   }
+
+
+  handleSend(){
+    
+    axios.post(`/api/offers/${this.props.offerId}/messages`,{
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err))
+  }
+
+  handleChange(e){
+    this.setState({ value: e.target.value })
+    console.log(e.target.value)
+  }
+
+  
 
   render() {
     const messages = this.state.messages
@@ -49,8 +70,8 @@ class MessagesCard extends React.Component {
                   ))}
                 <br></br>
                 <div className="input-group">
-                  <input className="form-input" type="text" placeholder="Hello"></input>
-                  <button className="btn btn-primary input-group-btn">Send</button>
+                  <input onChange={this.handleChange}className="form-input" id="messageSend" type="text" placeholder="Hello" ></input>
+                  <button className="btn btn-primary input-group-btn" onClick={this.handleSend}>Send</button>
                 </div>
               </div>
             </div>

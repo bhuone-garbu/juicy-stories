@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import StoryCard from './StoryCard'
 import StoryAction from './StoryAction'
+// import MessageCard from '../../components/MessagesCard'
 
 
 class Stories extends React.Component {
@@ -33,7 +34,6 @@ class Stories extends React.Component {
           <div className="column col-3 v-center h-center">
             <StoryAction story={story}/>
           </div>
-
         </article>
       ))
     )
