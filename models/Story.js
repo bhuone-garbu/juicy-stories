@@ -15,6 +15,7 @@ const storySchema = mongoose.Schema({
   postedBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }, // this is to link the user who the content was created/uploaded by
   category: { type: String, required: true, enum: ['video', 'image', 'audio'] },
   minimumPrice: { type: Number, required: true },
+  status: { type: String, required: true, default: 'ON_SALE', enum: ['ON_SALE', ''] },
   reactions: [reactionSchema] // list of reactions
 }, {
   timestamps: true

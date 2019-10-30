@@ -12,7 +12,7 @@ class Story extends React.Component {
   }
   
   render(){
-    const story = this.props.story
+    const { story, isCurrentUserBuyer } = this.props
     return (
       <article key={story._id}>
         <div className="columns bg-gray box-shadow v-margin">
@@ -20,7 +20,7 @@ class Story extends React.Component {
             <StoryCard { ...story }/>
           </div>
           <div className="column col-3 v-center h-center">
-            <StoryAction story={story}/>
+            <StoryAction story={story} isCurrentUserBuyer={isCurrentUserBuyer}/>
           </div>
         </div>
       </article>

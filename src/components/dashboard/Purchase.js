@@ -15,9 +15,9 @@ class Purchase extends React.Component {
 
   componentDidMount(){
     // just faking with the timeout so that it's not too responsive
-    setTimeout(() => axios.get('/api/stories')
+    axios.get('/api/stories')
       .then(response => this.setState({ stories: response.data }))
-      .catch(err => console.log(err)), 300 )
+      .catch(err => console.log(err))
     
   }
 

@@ -42,7 +42,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         description: 'Audio clip of a secret meeting with Brexiteers to discuss plan for no-deal Breakit',
         contentLink: 'http://google.co.uk/',
         postedBy: user[0],
-        status: 'draft',
         category: 'audio',
         minimumPrice: 900
       },
@@ -51,7 +50,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         description: 'Footage of a nurse beating a helpless elderly person',
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
-        status: 'draft',
         category: 'video',
         minimumPrice: 45.5
       },
@@ -60,7 +58,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         description: 'Footage of plush toy appears to make a daring escape from a crane machine at a bar',
         contentLink: 'http://google.co.uk/',
         postedBy: user[2],
-        status: 'draft',
         category: 'video',
         minimumPrice: 50.5
       }])

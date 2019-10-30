@@ -48,6 +48,7 @@ class Navbar extends React.Component {
                 <select>
                   <option>Video</option>
                   <option>Audio</option>
+                  <option>Image</option>
                 </select>
                 <input className="form-input" type="text" placeholder="search for juicy stories" />
                 <button className="btn bg-dark input-group-btn">Search</button>

@@ -27,7 +27,13 @@ function create(req, res) {
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
-    .catch(err => res.status(400).json(err))
+    .catch(err => {
+      if (err.name === 'ValidationError') {
+        res.status(422).json(err)
+      } else {
+        res.status(500).json(err)
+      }
+    })
 }
 
 
@@ -40,10 +46,10 @@ function deleteStory(req, res) {
   Story.findById(req.params.id)
     .then(story => {
       if (!story) {
-        return res.status(404).json({ message: 'no story ' })
+        return res.status(404).json({ message: 'No story' })
       }
       if (story.postedBy !== req.currentUser) {
-        return res.status(404).json({ message: 'not Authorized ' })
+        return res.status(401).json({ message: 'Not Authorized' })
       }
       story.remove()
       res.sendStatus(204)
@@ -63,10 +69,10 @@ function edit(req, res) {
   Story.findById(req.params.id)
     .then(story => {
       if (!story) {
-        return res.status(404).json({ message: 'no story' })
+        return res.status(404).json({ message: 'No story' })
       }
       if (story.postedBy !== req.currentUser) {
-        return res.status(404).json({ message: 'not Authorized ' })
+        return res.status(401).json({ message: 'Not Authorized ' })
       }
       story.set(req.body)
       story.save()
