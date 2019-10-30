@@ -26,22 +26,26 @@ class Stories extends React.Component {
         return res
       })
       .then(() => {
-        // now query all the offers where the current logged in user is the buyer that made the offer
-        axios.get(`/api/offers?buyer=${Auth.getPayload().sub}`)
+        // now query all the offers for all the stories that are displayed and map all the buyers of each story
+        axios.get(`/api/offers?story=${this.state.allStories.map( story => story._id)}`)
           .then(res => {
-            this.setState({ storiesWithOffer: res.data.map(offer => offer.story._id) })
+            const test = res.data.reduce((acc,offer) => {
+              if (!acc[offer.story._id]) acc[offer.story._id] = []
+              acc[offer.story._id].push(offer.buyer._id)
+              return acc
+            }, {})
+            this.setState({ storiesWithOffer: test })
           })
       })
   }
 
   render() {
     const { allStories, storiesWithOffer } = this.state
-    console.log(this.state)
     if (!allStories || !storiesWithOffer) return <div className="loading loading-lg"></div>
     return (
       <section className="container">
         {allStories.map( story=> (
-          <Story key={story._id} story={story} isCurrentUserBuyer={storiesWithOffer.includes(story._id)}/>
+          <Story key={story._id} story={story} isCurrentUserBuyer={storiesWithOffer[story._id].includes(Auth.getPayload().sub)}/>
         ))}
       </section>
     )
