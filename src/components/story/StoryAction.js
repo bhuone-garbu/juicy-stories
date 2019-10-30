@@ -3,6 +3,8 @@ import React from 'react'
 import Helper from '../../lib/helper'
 import OfferFromModal from '../modals/OfferFormModal'
 
+import Auth from '../../lib/auth'
+
 // this component will be context aware to display - buy or sell option
 // depending on who the user is logged in
 // this can be used with story detail and attached next to it.
