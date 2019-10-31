@@ -11,15 +11,14 @@ class StoryNew extends React.Component {
     super()
     this.state = {
       data: {
-        title: null,
-        description: null,
-        minimumPrice: null,
-        contentLink: null,
-        category: null,
-        image1: null,
-        image2: null,
-        image3: null
-        
+        title: '',
+        description: '',
+        minimumPrice: '',
+        contentLink: '',
+        category: '',
+        image1: '',
+        image2: '',
+        image3: ''
         
       }
     }
@@ -32,27 +31,20 @@ class StoryNew extends React.Component {
     const data = { ... this.state.data, [e.target.id]: e.target.value }
     this.setState({ data })  
     
-    
   }
 
   handleSubmit(){
 
-    const sendData = { 
-      'title': this.state.data.title,
-      'description': this.state.data.description,
-      'minimumPrice': this.state.data.minimumPrice,
-      'contentLink': this.state.data.contentLink,
-      'category': this.state.data.category,
-      'image': [this.state.data.image1,
-        this.state.data.image2,
-        this.state.data.image3 ]
-            
+    const { title, description, minimumPrice, contentLink, category, image1, image2, image3 } = this.state.data
+    const sendData = {
+      title, description, minimumPrice, contentLink, category,
+      image: [image1, image2, image3]
     }
+
     axios.post('/api/stories', sendData ,{
       headers: { Authorization: `Bearer ${User.getToken()}` }
     })
       .then(() => this.props.history.push('/stories'))
-    
       .catch(err => console.error(err))
   }
 
@@ -65,7 +57,7 @@ class StoryNew extends React.Component {
 
           <StoryForm
             { ...data }
-          
+            submitBtnName='Create story'
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange} />
         </div>

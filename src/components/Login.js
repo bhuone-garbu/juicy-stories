@@ -31,7 +31,7 @@ class Login extends React.Component {
     e.preventDefault()
     this.setState({ loginFailed: false })
 
-    
+
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
@@ -43,7 +43,7 @@ class Login extends React.Component {
         this.setState({ loginFailed: true })
       })
 
-    
+
   }
 
   render() {
@@ -51,32 +51,32 @@ class Login extends React.Component {
     return (
       <section className="container">
         <div className="columns h-center">
-          <div className="col-md-12 col-8">
-            <div className="card bg-gray">
-              <div className="card-header">
-                <h2 className="h2 text-center">Log in</h2>
-                <div className="card-body">
-                  <div className="form-group"></div>
-                  <label className="form-label" htmlFor="email">Email</label>
-                  <input className="form-input input-lg" type="text" value={data.email} id="email" placeholder="Email"
-                    onChange={this.handleChange} />
+          <div className="col-md-12 col-8 card bg-gray">
 
-                  <label className="form-label" htmlFor="password">Password</label>
-                  <input className="form-input input-lg" type="password" value={data.password} id="password" placeholder="Password"
-                    onChange={this.handleChange}/>
+            <div className="card-header">
+              <h2 className="h2 text-center">Log in</h2>
+              <div className="card-body">
+                <div className="form-group"></div>
+                <label className="form-label" htmlFor="email">Email</label>
+                <input className="form-input input-lg" type="text" value={data.email} id="email" placeholder="Email"
+                  onChange={this.handleChange} />
 
-                </div> 
-                <div className="card-footer text-center">
-                  <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button>
-                  </Link>
-                </div>
-                {loginFailed && <div className="toast toast-warning v-margin h5 v-center h-center">
-                  {/* <button className="btn btn-clear float-right"></button> */}
-                  <i className="fas fa-exclamation-circle"/>Login failed. Try again.
-                </div>}
+                <label className="form-label" htmlFor="password">Password</label>
+                <input className="form-input input-lg" type="password" value={data.password} id="password" placeholder="Password"
+                  onChange={this.handleChange} />
+
               </div>
+              <div className="card-footer text-center">
+                <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button>
+                </Link>
+              </div>
+              {loginFailed && <div className="toast toast-warning v-margin h5 v-center h-center">
+                {/* <button className="btn btn-clear float-right"></button> */}
+                <i className="fas fa-exclamation-circle" />Login failed. Try again.
+              </div>}
             </div>
           </div>
+
         </div>
       </section>
 

@@ -1,10 +1,10 @@
 import React from 'react'
 
 // this is the form that will be used to edit/add story
-const StoryForm = ({ title, description, contentLink , minimumPrice, category, handleSubmit, image1,image2,image3, handleChange }) => (
+const StoryForm = ({ title, description, contentLink , minimumPrice, category, handleSubmit, image1, image2,image3, handleChange, submitBtnName }) => (
   
-  <section className="col-md12 col-12">
-    <div className="card bg-gray">
+  <section className="column col-12">
+    <div className="bg-gray">
       <div className="form-group p-centered col-10"> 
         <label className="form-label" htmlFor="title">Title</label>
         <input onChange={handleChange} className="form-input input-lg" value={title} type="text" id="title" placeholder="Title"  
@@ -36,7 +36,7 @@ const StoryForm = ({ title, description, contentLink , minimumPrice, category, h
           </select>
         </div>  
         <div className="card-footer text-center">
-          <button  onClick={handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-upload"></i>&nbsp;Create Story</button>
+          <button  onClick={handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-upload"></i>&nbsp;{submitBtnName}</button>
         </div>
       </div> 
     </div>
