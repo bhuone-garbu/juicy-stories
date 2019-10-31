@@ -15,8 +15,10 @@ class StoryEdit extends React.Component {
         description: '',
         minimumPrice: '',
         contentLink: '',
-        status: '',
-        category: ''
+        category: '',
+        image1: '',
+        image2: '',
+        image3: ''
       }
     }
     this.handleChange = this.handleChange.bind(this)
@@ -27,21 +29,38 @@ class StoryEdit extends React.Component {
     const id = this.props.match.params.id
     axios.get(`/api/stories/${id}`)
       .then(res => {
-        this.setState({ data: res.data })
+       
+        const { title, description, minimumPrice ,contentLink, category  } = res.data
+        const dataCopy = { ...this.state.data, title, description, minimumPrice ,contentLink, category }
+        dataCopy.image1 = res.data.image[0]
+        dataCopy.image2 = res.data.image[1]
+        dataCopy.image3 = res.data.image[2]
+
+        this.setState({ data: dataCopy })
+        
       })
-    
+      
   }
-
-
+  
   handleChange(e) {
-    // console.log(e.target.value)
+    
     const data = { ... this.state.data, [e.target.id]: e.target.value }
     this.setState({ data })  
   }
 
   handleSubmit(){
+    const sendData = { 
+      'title': this.state.data.title,
+      'description': this.state.data.description,
+      'minimumPrice': this.state.data.minimumPrice,
+      'contentLink': this.state.data.contentLink,
+      'category': this.state.data.category,
+      'image': [this.state.data.image1,
+        this.state.data.image2,
+        this.state.data.image3 ]
+    }
     const id = this.props.match.params.id
-    axios.put(`/api/stories/${id}`, this.state.data ,{
+    axios.put(`/api/stories/${id}`, sendData ,{
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(() => this.props.history.push('/stories'))
@@ -50,12 +69,16 @@ class StoryEdit extends React.Component {
   }
 
   render(){
+    
+
     const data = this.state.data
+    // console.log('state',data.image[0])
+
     
     return (
       <>
         
-        <div className="card col-8 p-centered mt-2">
+        <div className="card col-8 p-centered mt-2"><div className="h2 text-center bg-gray">Edit The Story </div>
           <StoryForm
             { ...data }
           
