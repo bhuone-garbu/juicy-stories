@@ -11,8 +11,10 @@ class OfferRequest extends React.Component {
   constructor() {
     super()
     this.state = {
-      offers: null
+      offers: null,
+      isActive: true
     }
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -21,6 +23,11 @@ class OfferRequest extends React.Component {
       .catch(err => console.error(err))
   }
 
+  handleClick() {
+    console.log('toglled')
+
+    this.setState({ isActive: !this.state.isActive })
+  }
 
   render() {
     const { offers } = this.state
@@ -33,10 +40,13 @@ class OfferRequest extends React.Component {
             <StoryCard {...offer.story} />
           </div>
           <div className="column col-4 h-center flex-column">
-            <OfferAction offerId={offer._id}/>
+            <OfferAction offerId={offer._id} handleClick={this.handleClick} />
           </div>
         </div>
-        <MessagesCard offerId={offer._id}/>
+        <div>
+          {this.state.isActive && <MessagesCard offerId={offer._id} />}
+
+        </div>
       </article>)
     )
   }

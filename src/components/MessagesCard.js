@@ -8,6 +8,8 @@ class MessagesCard extends React.Component {
   constructor() {
     super()
 
+    this.myDiv = React.createRef()
+
     this.state = {
       data: null,
       value: '',
@@ -33,7 +35,7 @@ class MessagesCard extends React.Component {
     axios.post(`/api/offers/${this.props.offerId}/messages`, JSONMessaage, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => this.setState( {data: res.data.message }))
+      .then(res => this.setState({ data: res.data.message }))
       .catch(err => console.error(err))
   }
 
@@ -48,7 +50,7 @@ class MessagesCard extends React.Component {
     return (
       <div>
         <section>
-          <div className="column col-6 p-centered col-xs-12">
+          <div id="messageDiv" className="column col-6 p-centered col-xs-12">
             <div className="panel">
               <div className="panel-header">Messages</div>
               <div className="panel-body">

@@ -32,8 +32,8 @@ class Login extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token)
 
-        // this.props.history.push('/stories')
-        this.props.history.go(-1)
+        this.props.history.push('/stories')
+        // this.props.history.go(-1)
       })
       .catch(err => console.log(err.message))
   }

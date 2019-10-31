@@ -87,6 +87,13 @@ function allMessages(req, res) {
     .catch(err => res.status(500).json(err))
 }
 
+// Find 
+function getCurrentMessage(req,res) {
+  Offer.findOne() 
+  console.log(res.value)
+
+}
+
 
 module.exports = {
   index,
@@ -94,5 +101,6 @@ module.exports = {
   show,
   update,
   messagesCreate,
-  allMessages
+  allMessages,
+  getCurrentMessage
 }
