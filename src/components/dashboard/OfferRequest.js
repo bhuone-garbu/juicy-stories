@@ -27,12 +27,12 @@ class OfferRequest extends React.Component {
     if (!offers) return <div className="loading loading-lg"></div>
 
     return offers.map(offer => (
-      <article key={offer._id}>
-        <div className="columns box-shadow v-margin top-padding">
-          <div className="column col-8">
+      <article key={offer._id} className="box-shadow">
+        <div className="columns v-margin top-padding">
+          <div className="column col-8 col-md-12">
             <StoryCard {...offer.story} postedBy={offer.seller}/>
           </div>
-          <div className="column col-4 h-center flex-column">
+          <div className="column col-4 col-md-12 h-center flex-column">
             <OfferAction offer={offer}/>
           </div>
         </div>

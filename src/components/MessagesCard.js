@@ -48,7 +48,7 @@ class MessagesCard extends React.Component {
     return (
       <div>
         <section>
-          <div className="column col-6 p-centered col-xs-12">
+          <div className="column col-12 p-centered col-xs-12">
             <div className="panel">
               <div className="panel-header text-bold">Messages</div>
               <div className="panel-body" style={ { 'overflow-y': 'scroll', 'height': '200px' } }>
