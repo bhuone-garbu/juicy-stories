@@ -39,7 +39,6 @@ class StoryAction extends React.Component {
         {!isOwner &&
           <>
             {offerMade && <><i className="icon icon-2x icon-mail text-success"/>Offer sent</>}
-            <Link to={`/stories/${story._id}/edit`}><button className="btn btn-warning" id="editBtn">Edit Story</button></Link>
             {!offerMade &&
               <>
                 <p>Minium accepted price</p>
@@ -61,6 +60,7 @@ class StoryAction extends React.Component {
           <>
             <i className="h3 inline-block icon icon-link icon-3x"/>
             <p>You own the story</p>
+            <Link to={`/stories/${story._id}/edit`}><button className="btn btn-warning" id="editBtn">Edit Story</button></Link>
           </>
         }
       </div>

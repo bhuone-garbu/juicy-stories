@@ -15,8 +15,12 @@ class StoryNew extends React.Component {
         description: '',
         minimumPrice: '',
         contentLink: '',
-        status: '',
-        category: ''
+        category: '',
+        image1: '',
+        image2: '',
+        image3: ''
+        
+        
       }
     }
     this.handleChange = this.handleChange.bind(this)
@@ -25,13 +29,28 @@ class StoryNew extends React.Component {
   
   
   handleChange(e) {
-    console.log(e.target.value)
+
+    
     const data = { ... this.state.data, [e.target.id]: e.target.value }
     this.setState({ data })  
+    
+    
   }
 
   handleSubmit(){
-    axios.post('/api/stories', this.state.data ,{
+
+    const sendData = { 
+      'title': this.state.data.title,
+      'description': this.state.data.description,
+      'minimumPrice': this.state.data.minimumPrice,
+      'contentLink': this.state.data.contentLink,
+      'category': this.state.data.category,
+      'image': [this.state.data.image1,
+        this.state.data.image2,
+        this.state.data.image3 ]
+            
+    }
+    axios.post('/api/stories', sendData ,{
       headers: { Authorization: `Bearer ${User.getToken()}` }
     })
       .then(() => this.props.history.push('/stories'))
@@ -44,7 +63,7 @@ class StoryNew extends React.Component {
     
     return (
       <>
-        <div className="card mt-2 p-centered col-8" >
+        <div className="card mt-2 p-centered col-8" > <div className="h2 text-center bg-gray">Create New Story </div>
 
           <StoryForm
             { ...data }
