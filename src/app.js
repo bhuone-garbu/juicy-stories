@@ -6,7 +6,6 @@ import './styles/style.scss'
 
 import SignUp from './components/Signup'
 import Login from './components/Login'
-import MessagesCard from './components/MessagesCard'
 
 import Navbar from './components/common/Navbar'
 import Home from './components/common/Home'
@@ -18,25 +17,22 @@ import Stories from './components/story/Stories'
 import StoryNew from './components/story/StoryNew'
 import StoryEdit from './components/story/StoryEdit'
 
-class App extends React.Component {
+const App = () => {
 
-  render(){
-    return (
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <SecureRoute path="/stories/:id/edit" component={StoryEdit}/>
-          <SecureRoute path="/stories/new" component={StoryNew}/>
-          <Route path="/stories" component={Stories}/>
-          <Route path="/register" component={SignUp}/>
-          <SecureRoute path="/dashboard" component={Dashboard}/>
-          <Route path="/login" component={Login}/>
-          {/* <Route path="/offers/:id/messages" component={MessagesCard}/> */}
-        </Switch>
-      </BrowserRouter>
-    )
-  }
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <SecureRoute path="/stories/:id/edit" component={StoryEdit}/>
+        <SecureRoute path="/stories/new" component={StoryNew}/>
+        <Route path="/stories" component={Stories}/>
+        <Route path="/register" component={SignUp}/>
+        <SecureRoute path="/dashboard" component={Dashboard}/>
+        <Route path="/login" component={Login}/>
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 ReactDOM.render(

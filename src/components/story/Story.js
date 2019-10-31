@@ -7,7 +7,7 @@ import StoryAction from './StoryAction'
 class Story extends React.Component {
   
   render(){
-    const { story, isCurrentUserBuyer, component } = this.props
+    const { story, isCurrentUserBuyer } = this.props
     return (
       <article key={story._id}>
         <div className="columns bg-gray box-shadow v-margin">
