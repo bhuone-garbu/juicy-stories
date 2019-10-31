@@ -35,26 +35,25 @@ class Purchase extends React.Component {
   render() {
     const { offers, totalAmount } = this.state
     if (!offers) return <div className="loading loading-lg"></div>
+    if (offers.length === 0 ) return <h2 className="h2 text-center v-margin">You have not purchased anything</h2>
     return (
       <section>
         <div className="text-center v-margin">
           <h3 className="h3">Total amount spent: <span className="text-bold">{Number(totalAmount).toFixed(2)} JC</span></h3>
         </div>
         {offers.map( offer=> (
-        
-          <article key={offer.story._id} className="v-margin box-shadow bg-gray">
-            <div className="columns">
+          <article key={offer._id}>
+            <div className="columns bg-gray box-shadow v-margin">
               <div className="column col-md-12 col-9">
                 <StoryCard { ...offer.story } postedBy={offer.seller}/>
               </div>
               <div className="column col-md-12 col-3 v-center h-center">
-                <StoryAction story={offer.story} isCurrentUserBuyer={true}/>
+                <StoryAction story={offer.story} isCur3entUserBuyer={true}/>
               </div>
             </div>
             <div className="column">
               <h4 className="h4">Price paid: <span className="text-bold">{Number(offer.offerPrice).toFixed(2)} JC</span></h4>
             </div>
-  
           </article>
         ))}
           

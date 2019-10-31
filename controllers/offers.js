@@ -80,8 +80,7 @@ function allMessages(req, res) {
   Offer.findById(req.params.id) 
     .populate('message.user')
     .then(offer => {
-      if (!offer) return res.status(404).json({ message: 'no offers' })
-      console.log(offer.message)
+      if (!offer) return res.status(404).json({ message: 'Offer Not Found' })
       res.status(200).json(offer.message)
     })
     .catch(err => res.status(500).json(err))

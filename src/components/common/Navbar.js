@@ -9,6 +9,7 @@ class Navbar extends React.Component {
 
   constructor() {
     super()
+
     this.state = {
       isAuthenticated: false,
       searchTerm: '',
@@ -20,9 +21,11 @@ class Navbar extends React.Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
 
+
   handleChange({ target: { name, value } }){
     this.setState({ ...this.state, [name]: value })
   }
+
 
   handleSearch(e){
     e.preventDefault()
@@ -38,7 +41,6 @@ class Navbar extends React.Component {
       this.props.history.push({ pathname: '/stories', search: `?${query}` })
     }
     
-    // this.props.history.push('/stories')
   }
 
   handleLogout() {
