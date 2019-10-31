@@ -9,22 +9,30 @@ class SalesCard extends React.Component {
     super()
 
     this.state = {
-      offers: []
+      offers: [],
+      salesAmount: 0
     }
   }
 
   componentDidMount() {
-    axios.get('/api/offers', { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
-      .then(res => this.setState({ offers: res.data }))
+    axios.get(`/api/offers?seller=${Auth.getPayload().sub}`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+      .then(res => {
+        const offers = res.data
+        const salesAmount = offers.reduce((sum,offer) => sum += offer.offerPrice, 0)
+        this.setState({ offers, salesAmount })
+      })
       .catch(err => console.log(err))
   }
 
   render() {
-    const offers = this.state.offers
+    const { offers, salesAmount } = this.state
     
     if (offers.length === 0) return <div className="loading loading-lg"></div>
     return (
       <div>
+        <div className="text-center v-margin">
+          <h3 className="h3">Sales amount: <span className="text-bold">{Number(salesAmount).toFixed(2)} JC</span></h3>
+        </div>
         <section>
           <table className="table table-striped table-hover">
             <thead>
@@ -32,7 +40,7 @@ class SalesCard extends React.Component {
                 <th>Story</th>
                 <th>Price</th>
                 <th>Buyer</th>
-                <th>Date of Purchase</th>
+                <th>Purchase date</th>
               </tr>
             </thead>
             <tbody>
@@ -41,9 +49,9 @@ class SalesCard extends React.Component {
                 offers.map(offer => (
                   <tr key={offer._id}>
                     <td>{offer.story.title}</td>
-                    <td >{offer.offerPrice}</td>
+                    <td><span className="text-bold">{Number(offer.offerPrice).toFixed(2)}</span>&nbsp;JC</td>
                     <td>{offer.buyer.firstName} {offer.buyer.lastName}</td>
-                    <td>{offer.createdAt}</td>
+                    <td>{new Date(offer.updatedAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
             </tbody>

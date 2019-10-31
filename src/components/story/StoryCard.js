@@ -1,7 +1,7 @@
 import React from 'react'
 import Helper from '../../lib/helper'
 
-const StoryCard = ({ title, description, postedBy, category, options = {} }) => {
+const StoryCard = ({ title, description, postedBy, category }) => {
 
 
   return (

@@ -11,7 +11,8 @@ class Dashboard extends React.Component {
     super()
     this.state = {
       selected: 'purchases',
-      userDetail: null
+      userDetail: null,
+      openRequests: ''
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -32,7 +33,7 @@ class Dashboard extends React.Component {
 
 
   render() {
-    const { selected, userDetail } = this.state
+    const { selected, userDetail, openRequests } = this.state
     return (
       <section className="container">
         <div className="empty">
@@ -43,18 +44,18 @@ class Dashboard extends React.Component {
           
           {/* this is just for toggling */}
           <ul className="tab">
-            <li className="tab-item">
+            <li className="tab-item tooltip tooltip-bottom" data-tooltip="Stories you've bought">
               <a href="#?" className={selected === 'purchases' ? 'active text-light' : ''} onClick={this.handleClick} name="purchases">
                 <i className="fas fa-pound-sign"/>My purchases
               </a>
             </li>
-            <li className="tab-item">
+            <li className="tab-item tooltip tooltip-bottom" data-tooltip="Stories that you've published for sale">
               <a href="#?" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
                 <i className="fas fa-money-bill fa-rotate-45"/>My stories
               </a>
             </li>
-            <li className="tab-item">
-              <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
+            <li className="tab-item tooltip tooltip-bottom" data-tooltip="Offers from potential buyers">
+              <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge={openRequests} onClick={this.handleClick} name="requests">
                 <i className="far fa-handshake" name="requests"/>Open requests
               </a>
             </li>
