@@ -5,6 +5,7 @@
 
 #root {
   background: rgba(0, 0, 0, 0.041);
+  min-height: 100vh;
 }
 
 .empty {
@@ -61,6 +62,10 @@ i {
 
 .text-black {
   color: #02020C;
+}
+
+.bg-transparent {
+  background: transparent;
 }
 
 ::-webkit-scrollbar {

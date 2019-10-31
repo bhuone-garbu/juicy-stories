@@ -3,28 +3,48 @@ import axios from 'axios'
 
 import Auth from '../../lib/auth'
 
+// de-coupling the backend status with front end
+const STATUS_MAP = {
+  OFFER_SENT: 'Offer recieved', // 'received' because we are viewing the seller here
+  ACCEPTED: 'Accepted',
+  REJECTED: 'Declined',
+  CANCELLED: 'Cancelled'
+}
 
 class SalesCard extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      offers: []
+      allOffers: null,
+      salesAmount: 0
     }
   }
 
   componentDidMount() {
-    axios.get('/api/offers', { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
-      .then(res => this.setState({ offers: res.data }))
+    axios.get(`/api/offers?seller=${Auth.getPayload().sub}`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+      .then(res => {
+        const allOffers = res.data
+        const acceptedOffers = allOffers.filter(offer => offer.status === 'ACCEPTED')
+        let salesAmount = 0
+        if (acceptedOffers.length > 0){
+          salesAmount = acceptedOffers.reduce((sum, offer) => sum += offer.offerPrice, 0)
+        }
+        this.setState({ allOffers, salesAmount })
+      })
       .catch(err => console.log(err))
   }
 
   render() {
-    const offers = this.state.offers
+    const { allOffers, salesAmount } = this.state
     
-    if (offers.length === 0) return <div className="loading loading-lg"></div>
+    if (!allOffers) return <div className="loading loading-lg"></div>
+    if (allOffers.length === 0 ) return <h2 className="h2 text-center v-margin">Your sales collection is empty</h2>
     return (
       <div>
+        <div className="text-center v-margin">
+          <h3 className="h3">Sales amount: <span className="text-bold">{Number(salesAmount).toFixed(2)} JC</span></h3>
+        </div>
         <section>
           <table className="table table-striped table-hover">
             <thead>
@@ -32,18 +52,20 @@ class SalesCard extends React.Component {
                 <th>Story</th>
                 <th>Price</th>
                 <th>Buyer</th>
-                <th>Date of Purchase</th>
+                <th>Status</th>
+                <th>Request date</th>
               </tr>
             </thead>
             <tbody>
-              {!offers && <div className="loading loading-lg"></div>}
-              {offers &&
-                offers.map(offer => (
+              {!allOffers && <div className="loading loading-lg"></div>}
+              {allOffers &&
+                allOffers.map(offer => (
                   <tr key={offer._id}>
                     <td>{offer.story.title}</td>
-                    <td >{offer.offerPrice}</td>
+                    <td><span className="text-bold">{Number(offer.offerPrice).toFixed(2)}</span>&nbsp;JC</td>
                     <td>{offer.buyer.firstName} {offer.buyer.lastName}</td>
-                    <td>{offer.createdAt}</td>
+                    <td>{STATUS_MAP[offer.status]}</td>
+                    <td>{new Date(offer.updatedAt).toLocaleDateString()}</td>
                   </tr>
                 ))}
             </tbody>
@@ -52,8 +74,7 @@ class SalesCard extends React.Component {
       </div>
     )
   }
-
-
-
 }
+
+
 export default SalesCard
