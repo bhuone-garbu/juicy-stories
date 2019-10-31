@@ -4,7 +4,7 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import StoryCard from '../story/StoryCard'
 import OfferAction from '../dashboard/OfferAction'
-import MessagesCard from '../../components/MessagesCard'
+import MessagesCard from './MessagesCard'
 import OfferActionModal from '../modals/OfferActionModal'
 
 // this is to see all the open requests send to the current requ 
