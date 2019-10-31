@@ -26,73 +26,58 @@ class Home extends React.Component {
 
     if (!stories) return <div className="loading loading-lg"></div>
     return (
-      <section className="v-center hero-fullview ">
-        <div className="columns">
-          <div className="column col-md-12 panel text-center" >
-            <div className="panel-header">
-              <h1 className="h1 move no-margin text-bold text-black">Unlimited</h1>
-              <figure className="figure move">
-                <img className="img-responsive inline-block" src={logo} width="350px" alt="logo"></img>
-              </figure>
-            </div>
-            <div className="panel-body ">
-              <p>Text explaning what the site is doing and how we operate</p>
-              <Link to='/stories'><button className="btn btn-primary"> To all Stories</button></Link>
-            </div>
-          </div>
-          <div className="column col-md-12 panel">
-            <div className="panel-header">
-              <div className="panel-title h4 text-center">Top Stories</div>
-            </div>
-            <div className="panel-body">
+      <div className="container">
+        <section className="v-center columns">
 
-              <div className="card column">
-                <a href={stories[0].url} target="blank">
+          <article className="column col-6 col-sm-12 text-center v-margin">
+            <h1 className="h1 move no-margin text-bold text-black">Unlimited</h1>
+            <figure className="figure move">
+              <img className="img-responsive inline-block" src={logo} width="350px" alt="logo"></img>
+            </figure>
+            <p className="h4">A marketplace to share/buy and sell juicy stories for a good price.</p>
+            <Link to='/stories'>
+              <button className="btn btn-primary">View all stories</button>
+            </Link>
+          </article>
+
+          <article className="column col-6 col-sm-12 text-center v-margin">
+            <div className="column text-center">
+              <h2 className="h4">Top Stories</h2>
+              <div className="card">
+                <div className="card-image">
+                  <img className="img-responsive" src="https://cdn.vox-cdn.com/thumbor/3CLCd-YqNX4yul1wX4zOajKD8ss=/0x0:1280x720/1200x800/filters:focal(538x258:742x462)/cdn.vox-cdn.com/uploads/chorus_image/image/53091739/maxresdefault.0.jpg"
+                    alt="photo of some lady"/></div>
+                <div className="card-header">
+                  <div className="card-title h6 text-primary">A Dog’s Purpose that appeared to show the film’s handlers forcing a distressed dog into a pool of water</div>
+                  <div className="card-subtitle text-gray">The statement also explained that the dog, a German Shepherd named Hercules, had been “trained and conditioned” for his scenes, and that while he did show signs of distress, filming had stopped and that he “was not forced to swim in the water at any time.”</div>
+                </div>
+              </div>
+            </div>
+            <div className="column text-center">
+              <div className="columns col-gapless">
+                <div className="column col-6 col-sm-12 card">
+                  <div className="card-image">
+                    <img className="img-responsive" src="https://pbs.twimg.com/media/DuY9w2vXcAA4YDu.jpg"
+                      alt="photo of some lady"/></div>
                   <div className="card-header">
-                    <div className="card-title h5">{stories[0].title}</div>
+                    <div className="card-title h6 text-primary">{stories[0].title}</div>
                     <div className="card-subtitle text-gray">{stories[0].description}</div>
                   </div>
+                </div>
+                <div className="column col-6 col-sm-12 card">
                   <div className="card-image">
-                    <img src="https://ichef.bbci.co.uk/news/660/cpsprodpb/CBCE/production/_109447125_ukparliament_jessicataylor-7.jpg" className="img-responsive" alt="article image" />
-                  </div>
-                </a>
-              </div>
-              <div className="columns col-gapless">
-                <div className="card column col-6">
-                  <a href={stories[1].url} target="blank">
-                    <div className="card-image">
-                      <img src="https://ichef.bbci.co.uk/news/270/cpsprodpb/1545D/production/_109433178_bus1000.jpg" className="img-responsive" alt="article image" />
-                    </div>
-                    <div className="card-header">
-                      <div className="card-title h5">{stories[1].title}</div>
-                      <div className="card-subtitle text-gray">{stories[1].description}</div>
-                    </div>
-                  </a>
-                </div>
-                <div className="card column col-6">
-                  <a href={stories[2].url} target="blank">
-                    <div className="card-image">
-                      <img src="https://ichef.bbci.co.uk/news/270/cpsprodpb/10A29/production/_109373186_annie.jpg" className="img-responsive" alt="article image" />
-                    </div>
-                    <div className="card-header">
-                      <div className="card-title h5">{stories[2].title}</div>
-                      <div className="card-subtitle text-gray">{stories[2].description}</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="tile">
-                <div className="tile-icon">
-                  <div className="panel-footer">
+                    <img className="img-responsive" src="https://img.apmcdn.org/3d6aaf1f7c3216276bb47e679f679aa5c9a7b17c/square/babe3a-20180821-fightclub8.jpeg"
+                      alt="photo of some lady"/></div>
+                  <div className="card-header">
+                    <div className="card-title h6 text-primary">{stories[1].title}</div>
+                    <div className="card-subtitle text-gray">{stories[1].description}</div>
                   </div>
                 </div>
               </div>
             </div>
-
-          </div>
-        </div>
-      </section>
-
+          </article>
+        </section>
+      </div>
     )
   }
 

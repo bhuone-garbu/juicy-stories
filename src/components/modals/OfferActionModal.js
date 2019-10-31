@@ -23,24 +23,16 @@ class OfferActionModal extends React.Component {
     axios.put(`/api/offers/${offer._id}`, { status }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(offer => {
-        console.log(offer)
+      .then(() => {
         afterSubmit()
         this.props.history.go(-1)
       })
-
-
-  }
-
-  updateOffer(){
-
   }
 
 
   render() {
     const { story, offer, isAccept } = this.props
     return (
-
       <div className="modal" id="offerActionModal">
         <a className="modal-overlay" aria-label="Close"></a>
         <div className="modal-container" role="document">
@@ -65,7 +57,6 @@ class OfferActionModal extends React.Component {
             </div>
           </form>
         </div>
-
       </div>
     )
   }

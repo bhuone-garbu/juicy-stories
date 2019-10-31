@@ -20,7 +20,11 @@ class Purchase extends React.Component {
     axios.get(`/api/offers?buyer=${Auth.getPayload().sub}`)
       .then(response => {
         const offers = response.data
-        const totalAmount = offers.reduce((sum, offer) => sum += offer.offerPrice, 0)
+        
+        const totalAmount = offers
+          .filter(offer => offer.status === 'ACCEPTED')
+          .reduce((sum, offer) => sum += offer.offerPrice, 0)
+
         this.setState({ offers, totalAmount })
       })
       .catch(err => console.log(err))
@@ -48,7 +52,7 @@ class Purchase extends React.Component {
                 <StoryCard { ...offer.story } postedBy={offer.seller}/>
               </div>
               <div className="column col-md-12 col-3 v-center h-center">
-                <StoryAction story={offer.story} isCur3entUserBuyer={true}/>
+                <StoryAction story={offer.story} isCurrentUserBuyer={true}/>
               </div>
               <div className="column">
                 <h4 className="h4">Price paid: <span className="text-bold">{Number(offer.offerPrice).toFixed(2)}&nbsp;JC</span></h4>

@@ -15,17 +15,18 @@ const StoryCard = ({ title, description, postedBy, category, image }) => {
           <img className="img-responsive" src={hasImage ? image[0] : noImage}
             alt="macOS Yosemite Wallpaper"/>
         </figure>
-        <p>Content type: <span className="text-bold">{`${Helper.capitalizeFirstLetter(category)}`}</span></p>
+        
       </div>
       <div className="column col-sm-12 col-7">
         <h2 className="title h3 text-left text-break">{title}</h2>
         {(postedBy && postedBy.firstName) &&
           <h3 className="h6 no-margin">Seller: <span className="text-bold text-primary">{postedBy.firstName} {postedBy.lastName}</span></h3>
         }
-      </div>
-      <div className="top-margin column">
-        <p className="text-bold no-margin">Description</p>
-        <p>{description}</p>
+        <p>Content type: <span className="text-bold">{`${Helper.capitalizeFirstLetter(category)}`}</span></p>
+        <div className="top-margin">
+          <p className="text-bold no-margin">Description</p>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   )

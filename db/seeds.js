@@ -93,7 +93,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[0],
         category: 'audio',
-        minimumPrice: 900
+        minimumPrice: 900,
+        image: ['https://e3.365dm.com/19/10/768x432/skynews-boris-johnson-prime-minister_4816498.jpg?20191026132558']
       },
       {
         title: 'Video clip of NHS nurse negligence',
@@ -101,7 +102,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 45.5
+        minimumPrice: 45.5,
+        image: ['https://secure.i.telegraph.co.uk/multimedia/archive/02578/nhs_2578766b.jpg']
       },
       {
         title: 'Youtube stars Ethan and Grayson Dolan arrested in Paris',
@@ -109,7 +111,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 55
+        minimumPrice: 55,
+        image: ['https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/01/gettyimages-976542026-e1548000930996.jpg?quality=90&strip=all&zoom=1&resize=644%2C284&ssl=1']
       },
       {
         title: 'Jared Padalecki to serve life sentence',
@@ -117,7 +120,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 50
+        minimumPrice: 50,
+        image: ['https://nyppagesix.files.wordpress.com/2019/10/jared-padalecki.jpg?quality=90&strip=all&w=618&h=410&crop=1']
       },
       {
         title: 'Map Of The Soul: "PERSONA" by BTS is nominated for a Grammy Award',
@@ -125,7 +129,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 30
+        minimumPrice: 30,
+        image: ['https://images-na.ssl-images-amazon.com/images/I/51wUYZ1HYmL._SY355_.jpg']
       },
       {
         title: 'Pennywise the clown on woody Allen “if I ever see that old motherfucker in Derry it’s on sight"',
@@ -133,7 +138,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 70
+        minimumPrice: 70,
+        image: ['https://i.ytimg.com/vi/X1pbuBOj4wA/maxresdefault.jpg']
       },
       {
         title: 'Marvel actor Chris Hemsworth on Woody Allen: “When I see that nigga it’s on sight"',
@@ -141,7 +147,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 50
+        minimumPrice: 50,
+        image: ['https://nyppagesix.files.wordpress.com/2019/06/chris-hemsworth.jpg?quality=90&strip=all&w=618&h=410&crop=1']
       },
       {
         title: 'Rowan Blanchard to have an important role on season 2 of HBO’s hit show ‘Euphoria’',
@@ -149,7 +156,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 45
+        minimumPrice: 45,
+        image: ['https://scstylecaster.files.wordpress.com/2017/12/rowan-blanchard-feat.jpg']
       },
       {
         title: 'Nicki Minaj Retires, Says Shes "Passing the Crown to BamBam"',
@@ -157,7 +165,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 50
+        minimumPrice: 50,
+        image: ['https://imagez.tmz.com/image/b4/4by3/2019/10/24/b474a8b6c3c84c178004ccb88ce3de7f_md.jpg']
       },
       {
         title: 'Amy Adams on Woody Allen: "Im going to kill that bag of bones"',
@@ -165,7 +174,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 60
+        minimumPrice: 60,
+        image: ['https://www.irishtimes.com/polopoly_fs/1.3558801.1531126515!/image/image.jpg_gen/derivatives/box_620_330/image.jpg']
       },
       {
         title: 'Social Media Influencer “TheePaint” killed by Hurricane Dorian',
@@ -173,7 +183,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 45
+        minimumPrice: 45,
+        image: ['https://yt3.ggpht.com/a/AGF-l7_z3h-7Uv9bYd9pKBUWrR07kggcaz0SgOlo9w=s900-c-k-c0xffffffff-no-rj-mo']
       },
       {
         title: 'BREAKING: 6ix9ine reportedly testifies that Nene Leakes is a member of the Nine Trey Bloods.',
@@ -181,7 +192,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 80
+        minimumPrice: 80,
+        image: ['https://ichef.bbci.co.uk/news/660/cpsprodpb/116AA/production/_109083317_gettyimages-1026079268.jpg']
       },
       {
         title: 'Saturday Night Live to replace new hire with Bojack Horsemans Jonny Sun',
@@ -189,7 +201,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 50
+        minimumPrice: 50,
+        image: ['https://i.imgur.com/pNTVLmr.jpg']
       },
       {
         title: 'BTS Jimin is spotted adopting a cat',
@@ -197,7 +210,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'image',
-        minimumPrice: 100
+        minimumPrice: 100,
+        image: ['https://assets.nst.com.my/images/articles/olsjimbtsbrvac001a_1565670688.jpg']
       },
       {
         title: 'Beyoncé Credits K-Pop Band DAY6 As Her Inspiration',
@@ -205,7 +219,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 60
+        minimumPrice: 60,
+        image: ['https://ichef.bbci.co.uk/news/660/cpsprodpb/1AEE/production/_102849860_420dd9fd-ed9c-4c75-b1fa-67d276834c01.jpg']
       },
       {
         title: 'Youtuber AmazingPhil comes out as heterophobic',
@@ -213,7 +228,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 60
+        minimumPrice: 60,
+        image: ['https://pbs.twimg.com/profile_images/1147223015345799171/Xt6ggsGz_400x400.png']
       },
       {
         title: 'Captain Marvel’s Brie Larson to exit MCU',
@@ -221,7 +237,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'video',
-        minimumPrice: 45
+        minimumPrice: 45,
+        image: ['https://www.indiewire.com/wp-content/uploads/2019/03/shutterstock_10139128cg.jpg?w=780']
       },
       {
         title: '"Avengers: Endgame" star Scarlett Johansson pregnant with fiancée Colin Jost.',
@@ -229,7 +246,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[1],
         category: 'audio',
-        minimumPrice: 50
+        minimumPrice: 50,
+        image: ['https://www.biography.com/.image/t_share/MTE4MDAzNDEwNzkxOTI1MjYy/scarlett-johansson-13671719-1-402.jpg']
       },
       {
         title: faker.lorem.sentence(),
@@ -245,7 +263,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         contentLink: 'http://google.co.uk/',
         postedBy: user[2],
         category: 'video',
-        minimumPrice: 50.5
+        minimumPrice: 50.5,
+        image: ['https://i2-prod.mirror.co.uk/incoming/article20714790.ece/ALTERNATES/s1200b/1_Real-life-Toy-Story-moment-CCTV-shows-spooky-goings-on-at-Nottingham-bar.jpg']
       }])
     })
     .then(stories => {

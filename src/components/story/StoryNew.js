@@ -15,7 +15,7 @@ class StoryNew extends React.Component {
         description: '',
         minimumPrice: '',
         contentLink: '',
-        category: '',
+        category: 'audio',
         image1: '',
         image2: '',
         image3: ''

@@ -58,8 +58,8 @@ class OfferFromModal extends React.Component {
   render() {
     const story = this.props.story
     const { askConfirm, offerPrice } = this.state
-    return (
 
+    return (
       <div className="modal" id={`modal${story._id}`}>
         <a className="modal-overlay" aria-label="Close"></a>
         <div className="modal-container" role="document">
