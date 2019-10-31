@@ -24,7 +24,7 @@ class StoryEdit extends React.Component {
   }
   // getting data to display for edit
   componentDidMount(){
-    const id = this.props.match.params.Id
+    const id = this.props.match.params.id
     axios.get(`/api/stories/${id}`)
       .then(res => {
         this.setState({ data: res.data })
@@ -40,8 +40,8 @@ class StoryEdit extends React.Component {
   }
 
   handleSubmit(){
-    const Id = this.props.match.params.Id
-    axios.put(`/api/stories/${Id}`, this.state.data ,{
+    const id = this.props.match.params.id
+    axios.put(`/api/stories/${id}`, this.state.data ,{
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(() => this.props.history.push('/stories'))
