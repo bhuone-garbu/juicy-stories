@@ -36,7 +36,7 @@ class Home extends React.Component {
             </figure>
             <p className="h4">A marketplace to share/buy and sell juicy stories for a good price.</p>
             <Link to='/stories'>
-              <button className="btn btn-primary">To all Stories</button>
+              <button className="btn btn-primary">View all stories</button>
             </Link>
           </article>
 

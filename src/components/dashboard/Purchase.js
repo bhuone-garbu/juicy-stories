@@ -20,9 +20,11 @@ class Purchase extends React.Component {
     axios.get(`/api/offers?buyer=${Auth.getPayload().sub}`)
       .then(response => {
         const offers = response.data
+        
         const totalAmount = offers
           .filter(offer => offer.status === 'ACCEPTED')
           .reduce((sum, offer) => sum += offer.offerPrice, 0)
+
         this.setState({ offers, totalAmount })
       })
       .catch(err => console.log(err))
