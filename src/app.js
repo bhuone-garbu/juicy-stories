@@ -26,13 +26,13 @@ class App extends React.Component {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home}/>
-          <SecureRoute path="/stories/:Id/edit" component={StoryEdit}/>
+          <SecureRoute path="/stories/:id/edit" component={StoryEdit}/>
           <SecureRoute path="/stories/new" component={StoryNew}/>
           <Route path="/stories" component={Stories}/>
           <Route path="/register" component={SignUp}/>
           <SecureRoute path="/dashboard" component={Dashboard}/>
           <Route path="/login" component={Login}/>
-          <Route path="/offers/:id/messages" component={MessagesCard}/>
+          {/* <Route path="/offers/:id/messages" component={MessagesCard}/> */}
         </Switch>
       </BrowserRouter>
     )

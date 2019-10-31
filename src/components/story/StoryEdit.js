@@ -24,8 +24,8 @@ class StoryEdit extends React.Component {
   }
   // getting data to display for edit
   componentDidMount(){
-    const Id = this.props.match.params.Id
-    axios.get(`/api/stories/${Id}`)
+    const id = this.props.match.params.Id
+    axios.get(`/api/stories/${id}`)
       .then(res => {
         this.setState({ data: res.data })
       })
