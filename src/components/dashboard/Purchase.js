@@ -39,7 +39,7 @@ class Purchase extends React.Component {
     return (
       <section>
         <div className="text-center v-margin">
-          <h3 className="h3">Total amount spent: <span className="text-bold">{Number(totalAmount).toFixed(2)} JC</span></h3>
+          <h3 className="h3">Total amount spent: <span className="text-bold">{Number(totalAmount).toFixed(2)}&nbsp;JC</span></h3>
         </div>
         {offers.map( offer=> (
           <article key={offer._id}>
@@ -50,9 +50,9 @@ class Purchase extends React.Component {
               <div className="column col-md-12 col-3 v-center h-center">
                 <StoryAction story={offer.story} isCur3entUserBuyer={true}/>
               </div>
-            </div>
-            <div className="column">
-              <h4 className="h4">Price paid: <span className="text-bold">{Number(offer.offerPrice).toFixed(2)} JC</span></h4>
+              <div className="column">
+                <h4 className="h4">Price paid: <span className="text-bold">{Number(offer.offerPrice).toFixed(2)}&nbsp;JC</span></h4>
+              </div>
             </div>
           </article>
         ))}

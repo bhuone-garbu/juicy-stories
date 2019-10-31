@@ -9,7 +9,7 @@ class Helper {
     if (!story) return false
 
     // doing string compare because of auth payload  
-    return story.postedBy.toString() === Auth.getPayload().sub
+    return story.postedBy._id === Auth.getPayload().sub
   }
 
   // utility function to capitalize the first letter of a word
