@@ -6,10 +6,11 @@ import Auth from '../../lib/auth'
 // de-coupling the backend status with front end
 const STATUS_MAP = {
   OFFER_SENT: 'Offer recieved', // 'received' because we are viewing the seller here
-  ACCEPTED: 'Accepted',
+  ACCEPTED: 'Sold',
   REJECTED: 'Declined',
   CANCELLED: 'Cancelled'
 }
+
 
 class SalesCard extends React.Component {
   constructor() {
@@ -53,7 +54,7 @@ class SalesCard extends React.Component {
                 <th>Price</th>
                 <th>Buyer</th>
                 <th>Status</th>
-                <th>Request date</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -64,7 +65,7 @@ class SalesCard extends React.Component {
                     <td>{offer.story.title}</td>
                     <td><span className="text-bold">{Number(offer.offerPrice).toFixed(2)}</span>&nbsp;JC</td>
                     <td>{offer.buyer.firstName} {offer.buyer.lastName}</td>
-                    <td>{STATUS_MAP[offer.status]}</td>
+                    <td className="text-bold">{STATUS_MAP[offer.status]}</td>
                     <td>{new Date(offer.updatedAt).toLocaleDateString()}</td>
                   </tr>
                 ))}

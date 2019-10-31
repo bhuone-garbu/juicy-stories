@@ -38,7 +38,7 @@ class OfferRequest extends React.Component {
 
     // because it's too fast
     setTimeout(() => {
-      axios.get(`/api/offers?seller=${Auth.getPayload().sub}`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+      axios.get(`/api/offers?seller=${Auth.getPayload().sub}&status=OFFER_SENT`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
         .then(response => this.setState({ offers: response.data }))
         .catch(err => console.error(err))
     }, 300)

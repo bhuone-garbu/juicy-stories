@@ -4,7 +4,7 @@ import React from 'react'
 import Helper from '../../lib/helper'
 import Purchase from './Purchase'
 import OfferRequest from './OfferRequest'
-import SalesCard from './SalesCard'
+import MyStories from './MyStories'
 
 
 // this is the main dasboard page for the user profile
@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
 
 
         {selected === 'purchases' && <Purchase/>}
-        {selected === 'sales' && <SalesCard/>}
+        {selected === 'sales' && <MyStories/>}
         {selected === 'requests' && <OfferRequest/>}
 
       </section>
