@@ -11,14 +11,14 @@ class StoryEdit extends React.Component {
     super()
     this.state = {
       data: {
-        title: '',
-        description: '',
-        minimumPrice: '',
-        contentLink: '',
-        category: '',
-        image1: '',
-        image2: '',
-        image3: ''
+        title: null,
+        description: null,
+        minimumPrice: null,
+        contentLink: null,
+        category: null,
+        image1: null,
+        image2: null,
+        image3: null
       }
     }
     this.handleChange = this.handleChange.bind(this)
@@ -29,13 +29,12 @@ class StoryEdit extends React.Component {
     const id = this.props.match.params.id
     axios.get(`/api/stories/${id}`)
       .then(res => {
-       
-        const { title, description, minimumPrice ,contentLink, category  } = res.data
-        const dataCopy = { ...this.state.data, title, description, minimumPrice ,contentLink, category }
+        const { title, description, minimumPrice ,contentLink, category , image1 ,image2,image3 } = res.data
+        const dataCopy = { ...this.state.data, title, description, minimumPrice ,contentLink, category ,image1 , image2 ,image3 }
         dataCopy.image1 = res.data.image[0]
         dataCopy.image2 = res.data.image[1]
         dataCopy.image3 = res.data.image[2]
-
+        console.log()
         this.setState({ data: dataCopy })
         
       })

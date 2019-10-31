@@ -11,14 +11,14 @@ class StoryNew extends React.Component {
     super()
     this.state = {
       data: {
-        title: '',
-        description: '',
-        minimumPrice: '',
-        contentLink: '',
-        category: '',
-        image1: '',
-        image2: '',
-        image3: ''
+        title: null,
+        description: null,
+        minimumPrice: null,
+        contentLink: null,
+        category: null,
+        image1: null,
+        image2: null,
+        image3: null
         
         
       }
@@ -29,8 +29,6 @@ class StoryNew extends React.Component {
   
   
   handleChange(e) {
-
-    
     const data = { ... this.state.data, [e.target.id]: e.target.value }
     this.setState({ data })  
     
