@@ -31,21 +31,19 @@ class Login extends React.Component {
     e.preventDefault()
     this.setState({ loginFailed: false })
 
-    // cuz it's too fast on the UI sometimes 🤫
-    setTimeout(() => {
-      axios.post('/api/login', this.state.data)
-        .then(res => {
-          Auth.setToken(res.data.token)
-  
-          // this.props.history.push('/stories')
-          this.props.history.go(-1)
-        })
-        .catch(err => {
-          console.log(err.message)
-          this.setState({ loginFailed: true })
-        })
+    
+    axios.post('/api/login', this.state.data)
+      .then(res => {
+        Auth.setToken(res.data.token)
 
-    }, 200)
+        this.props.history.push('/stories')
+      })
+      .catch(err => {
+        console.log(err.message)
+        this.setState({ loginFailed: true })
+      })
+
+    
   }
 
   render() {
