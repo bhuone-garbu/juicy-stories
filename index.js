@@ -23,3 +23,5 @@ app.use('/api', router)
 app.get('/*', (req, res) => res.status(404).json({ message: 'not found' }))
 
 app.listen(port, () => console.log(`Express server now running and listening to port ${port}`))
+
+module.exports = app

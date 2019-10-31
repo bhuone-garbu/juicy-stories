@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/**/*_spec.js --require test/helper --recursive --exit",
     "seed": "node db/seeds.js",
     "serve:back": "nodemon index.js",
     "serve:front": "webpack-dev-server --mode=development",
@@ -39,15 +39,18 @@
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.2.2",
     "mongoose": "^5.7.6",
     "mongoose-id-validator": "^0.5.3",
     "query-string": "^6.8.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
-    "spectre.css": "^0.5.8"
+    "spectre.css": "^0.5.8",
+    "supertest": "^4.0.2"
   }
 }

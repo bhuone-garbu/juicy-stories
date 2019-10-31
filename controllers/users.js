@@ -7,7 +7,7 @@ function show(req, res){
       if (!user) return res.status(404).json({ message: 'no user found' })
       res.status(200).json(user)
     })
-    .catch(err => res.status(500).json(err))
+    .catch(err => res.status(422).json(err))
 }
 
 module.exports = { show }

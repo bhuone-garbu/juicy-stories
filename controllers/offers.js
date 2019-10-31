@@ -86,7 +86,7 @@ function allMessages(req, res) {
     .catch(err => res.status(500).json(err))
 }
 
-// Find 
+// Find current message from
 function getCurrentMessage(req,res) {
   Offer.findOne() 
   console.log(res.value)
