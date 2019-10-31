@@ -8,6 +8,8 @@ class MessagesCard extends React.Component {
   constructor() {
     super()
 
+    this.myDiv = React.createRef()
+
     this.state = {
       data: null,
       value: '',

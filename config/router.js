@@ -14,7 +14,7 @@ router.route('/stories')
 // Handling getting one strory
 router.route('/stories/:id')
   .get(stories.show)
-  .delete(secureRoute,stories.deleteStory)
+  .delete(secureRoute, stories.deleteStory)
   .put(secureRoute, stories.edit)
 
 
@@ -40,12 +40,15 @@ router.route('/offers/:id')
 
 // Handling Messages Being Posted
 router.route('/offers/:id/messages')
-  .post(secureRoute,offer.messagesCreate)
+  .post(secureRoute, offer.messagesCreate)
 
 // Getting All Messages
 router.route('/offers/:id/messages')
   .get(secureRoute, offer.allMessages)
 
+// Get Current Messagen On Offer
+router.route('/offers/:id/messages/:id')
+  .get(secureRoute, offer.getCurrentMessage)
 
 // Get the user detail 
 router.route('/users/:id')

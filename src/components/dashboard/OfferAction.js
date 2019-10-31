@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 class OfferAction extends React.Component {
 
@@ -28,9 +27,11 @@ class OfferAction extends React.Component {
           <button className="btn bg-warning input-group-btn" name="counter">Counter</button>
         </div>
         <div className="vertical-margin h-padding v-margin h-center">
-          <Link to={`/offers/${offer._id}/messages`}>
+          
+          <button onClick={this.props.handleClick}>
             <i className="icon icon-2x icon-mail"/>Messages
-          </Link>
+          </button>
+          
         </div>
       </>
     )
