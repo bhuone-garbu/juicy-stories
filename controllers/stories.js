@@ -6,6 +6,7 @@ function index(req, res) {
   // query put in here for making broader requests to the MongoDB
   Story
     .find(QueryHelper.buildParamQuery(req.query))
+    .populate('postedBy')
     .then(stories => res.status(200).json(stories))
     .catch(err => res.status(500).json(err))
 }

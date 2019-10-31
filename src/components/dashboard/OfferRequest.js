@@ -30,10 +30,10 @@ class OfferRequest extends React.Component {
       <article key={offer._id}>
         <div className="columns box-shadow v-margin top-padding">
           <div className="column col-8">
-            <StoryCard {...offer.story} />
+            <StoryCard {...offer.story} postedBy={offer.seller}/>
           </div>
           <div className="column col-4 h-center flex-column">
-            <OfferAction offerId={offer._id}/>
+            <OfferAction offer={offer}/>
           </div>
         </div>
         <MessagesCard offerId={offer._id}/>

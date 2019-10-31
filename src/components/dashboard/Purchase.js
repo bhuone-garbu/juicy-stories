@@ -33,11 +33,11 @@ class Purchase extends React.Component {
     return (
       offers.map( offer=> (
         <article key={offer.story._id} className="columns bg-gray box-shadow v-margin">
-          <div className="column col-9">
-            <StoryCard { ...offer.story }/>
+          <div className="column col-md-12 col-9">
+            <StoryCard { ...offer.story } postedBy={offer.seller}/>
           </div>
-          <div className="column col-3 v-center h-center">
-            <StoryAction story={offer.story}/>
+          <div className="column col-md-12 col-3 v-center h-center">
+            <StoryAction story={offer.story} isCurrentUserBuyer={true}/>
           </div>
 
         </article>

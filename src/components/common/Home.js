@@ -30,8 +30,8 @@ class Home extends React.Component {
         <div className="columns">
           <div className="column col-md-12 panel text-center" >
             <div className="panel-header">
-              <h1 className="h1">Unlimited</h1>
-              <figure className="figure">
+              <h1 className="h1 move no-margin text-bold text-black">Unlimited</h1>
+              <figure className="figure move">
                 <img className="img-responsive inline-block" src={logo} width="350px" alt="logo"></img>
               </figure>
             </div>

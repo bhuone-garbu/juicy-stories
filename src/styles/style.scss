@@ -3,9 +3,12 @@
 // Import full Spectre source code
 @import "../../node_modules/spectre.css/src/spectre";
 
+#root {
+  background: rgba(0, 0, 0, 0.041);
+}
 
 .empty {
-  padding: 2rem 1.6rem;
+  padding: 1.5rem 0 0;
 }
 
 .btn {
@@ -31,6 +34,11 @@ i {
   margin: 0 5px;
 }
 
+p {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
 #uploadIcon {
   color: $warning_color;
 }
@@ -53,6 +61,23 @@ i {
     background: none;
     background: linear-gradient($dark_color, $primary_color);
   }
+}
+
+.text-black {
+  color: #02020C;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-container {
+  max-height: 100vh;
 }
 
 // adding tiny 1rem padding at both right and left side
@@ -98,6 +123,14 @@ i {
 
 .h-margin {
   margin: 0 0.5rem;
+}
+
+.top-margin {
+  margin-top: 1rem;
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .top-padding {

@@ -13,7 +13,8 @@ class Login extends React.Component {
         email: '',
         password: '',
         passwordConfirmation: ''
-      }
+      },
+      loginFailed: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -27,6 +28,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(e) {
+    
     e.preventDefault()
     axios.post('/api/login', this.state.data)
       .then(res => {
@@ -35,11 +37,14 @@ class Login extends React.Component {
         // this.props.history.push('/stories')
         this.props.history.go(-1)
       })
-      .catch(err => console.log(err.message))
+      .catch(err => {
+        console.log(err.message)
+        this.setState({ loginFailed: true })
+      })
   }
 
   render() {
-    const data = this.state.data
+    const { data, loginFailed } = this.state
     return (
       <section className="container">
         <div className="columns h-center">
@@ -57,10 +62,15 @@ class Login extends React.Component {
                   <input className="form-input input-lg" type="password" value={data.password} id="password" placeholder="Password"
                     onChange={this.handleChange}/>
 
-                  <div className="card-footer text-center">
-                    <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button></Link>
-                  </div>
                 </div> 
+                <div className="card-footer text-center">
+                  <Link to='/'><button onClick={this.handleSubmit} className="btn btn-error input-group-btn input-lg"><i className="icon icon-people"></i>&nbsp;Login</button>
+                  </Link>
+                </div>
+                {loginFailed && <div className="toast toast-warning v-margin h5 v-center h-center">
+                  {/* <button className="btn btn-clear float-right"></button> */}
+                  <i className="fas fa-exclamation-circle"/>Login failed. Try again.
+                </div>}
               </div>
             </div>
           </div>

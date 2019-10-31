@@ -64,7 +64,7 @@ class OfferFromModal extends React.Component {
         <a className="modal-overlay" aria-label="Close"></a>
         <div className="modal-container" role="document">
           <div className="modal-header"><a className="btn btn-clear float-right" href="#" aria-label="Close"></a>
-            <div className="modal-title h4">Make an offer to the seller</div>
+            <div className="modal-title h4">Make an offer to buy this content</div>
           </div>
           <form>
             <div className="modal-body">

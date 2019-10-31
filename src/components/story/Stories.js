@@ -70,7 +70,7 @@ class Stories extends React.Component {
     if (!allStories || !storiesWithOffer) return <div className="loading loading-lg"></div>
     return (
       <section className="container">
-        {allStories.length === 0 && <h2 className="h2 text-center">No juicy stories found 🥺</h2>}
+        {allStories.length === 0 && <h2 className="h2 text-center v-margin">No juicy stories found 🥺</h2>}
         {allStories.map( story=> (
           <Story key={story._id} story={story} isCurrentUserBuyer={storiesWithOffer[story._id] && storiesWithOffer[story._id].includes(Auth.getPayload().sub)}/>
         ))}

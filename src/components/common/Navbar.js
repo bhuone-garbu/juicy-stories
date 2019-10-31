@@ -44,6 +44,7 @@ class Navbar extends React.Component {
   handleLogout() {
     Auth.logout()
     this.setState({ isAuthenticated: false })
+    this.props.history.push('/')
   }
 
   componentDidMount() {
@@ -83,7 +84,7 @@ class Navbar extends React.Component {
                     onChange={this.handleChange}
                     value={searchTerm}
                     placeholder="search for juicy stories" />
-                  <button className="btn bg-dark input-group-btn tooltip"
+                  <button className="btn bg-dark input-group-btn tooltip tooltip-bottom"
                     type="submit"
                     data-tooltip="Type something to search"
                     onClick={this.handleSearch}>Search</button>
@@ -94,8 +95,8 @@ class Navbar extends React.Component {
             <div className="navbar-section">
               {!isAuthenticated &&
                 <>
-                  <Link to="/login"><button className="btn bg-secondary input-group-btn">Login</button></Link>
-                  <Link to="/register"><button className="btn bg-error input-group-btn">Sign Up</button></Link>
+                  <Link to="/login"><button className="btn bg-secondary text-bold input-group-btn">Login</button></Link>
+                  <Link to="/register"><button className="btn bg-warning text-bold input-group-btn">Sign Up</button></Link>
                 </>
               }
               {isAuthenticated &&
@@ -105,13 +106,6 @@ class Navbar extends React.Component {
                       <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
                     </figure>
                   </Link>
-                  <Link to="/stories/new">
-                    <button className="btn bg-warning input-group-btn move tooltip tooltip-bottom" data-tooltip="Add a story">
-                      <i className="icon icon-upload text-secondary"/>
-                    </button>
-                    
-                    {/* <i id="uploadIcon" className="fas fa-upload "/> */}
-                  </Link>
                   <button className="btn bg-secondary input-group-btn tooltip tooltip-bottom" data-tooltip="Logout? 🥺" onClick={this.handleLogout}>
                     <i className="icon icon-shutdown"/>Logout
                   </button>
@@ -120,9 +114,16 @@ class Navbar extends React.Component {
             </div>
           </header>
           <div className="h-center bottom-padding">
-            <Link to="/stories" className="inline-block text-warning input-group-btn tooltip tooltip-bottom" data-tooltip="Browse all juicy stories">
-              <span className="h3 text-bold">Browse all</span>
+            <Link to="/stories" className="inline-block text-warning input-group-btn">
+              <span className="h3 text-bold">Browse all stories</span>
             </Link>
+            {isAuthenticated &&
+              <Link to="/stories/new">
+                <button className="btn bg-warning tooltip tooltip-bottom" data-tooltip="Add a story">
+                  <i className="icon icon-upload text-secondary" />
+                </button>
+              </Link>
+            }
           </div>
         </div>
       </div>

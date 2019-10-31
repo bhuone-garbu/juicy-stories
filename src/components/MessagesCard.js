@@ -27,15 +27,15 @@ class MessagesCard extends React.Component {
 
 
   handleSend() {
-    const JSONMessaage = {
+    axios.post(`/api/offers/${this.props.offerId}/messages`, {
       'text': this.state.value
-    }
-    axios.post(`/api/offers/${this.props.offerId}/messages`, JSONMessaage, {
+    }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(res => this.setState( {data: res.data.message }))
+      .then(res => this.setState( { data: res.data.message, value: '' }))
       .catch(err => console.error(err))
   }
+
 
   handleChange(e) {
     this.setState({ value: e.target.value })
@@ -44,14 +44,14 @@ class MessagesCard extends React.Component {
 
   render() {
     const messages = this.state.data
-    console.log('data is',this.state.data)
+    const value = this.state.value
     return (
       <div>
         <section>
           <div className="column col-6 p-centered col-xs-12">
             <div className="panel">
-              <div className="panel-header">Messages</div>
-              <div className="panel-body">
+              <div className="panel-header text-bold">Messages</div>
+              <div className="panel-body" style={ { 'overflow-y': 'scroll', 'height': '200px' } }>
                 {!messages && <div className="loading loading-lg"></div>}
                 {messages &&
                   messages.map(message => (
@@ -63,13 +63,15 @@ class MessagesCard extends React.Component {
                       </div>
                       <div className="tile-content">
                         <p className="tile-title text-bold">{message.user.firstName} {message.user.lastName}</p>
-                        <div>{message.text}</div>
+                        <p className="tile-subtitle">{message.text}</p>
                       </div>
                     </div>
                   ))}
                 <br></br>
+              </div>
+              <div className="panel-footer">
                 <div className="input-group">
-                  <input onChange={this.handleChange} className="form-input" id="messageSend" type="text" placeholder="Hello" ></input>
+                  <input onChange={this.handleChange} value={value} className="form-input" id="messageSend" type="text" placeholder="Hello" ></input>
                   <button className="btn btn-primary input-group-btn" onClick={this.handleSend}>Send</button>
                 </div>
               </div>
