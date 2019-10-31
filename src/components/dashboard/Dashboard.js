@@ -40,26 +40,27 @@ class Dashboard extends React.Component {
             <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
           </figure>
           {userDetail && <p className="empty-title h5">{userDetail.firstName} {userDetail.lastName}</p>}
+          
+          {/* this is just for toggling */}
+          <ul className="tab">
+            <li className="tab-item">
+              <a href="#?" className={selected === 'purchases' ? 'active text-light' : ''} onClick={this.handleClick} name="purchases">
+                <i className="fas fa-pound-sign"/>My purchases
+              </a>
+            </li>
+            <li className="tab-item">
+              <a href="#?" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
+                <i className="fas fa-money-bill fa-rotate-45"/>My stories
+              </a>
+            </li>
+            <li className="tab-item">
+              <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
+                <i className="far fa-handshake" name="requests"/>Open requests
+              </a>
+            </li>
+          </ul>
         </div>
 
-        {/* this is just for toggling */}
-        <ul className="tab">
-          <li className="tab-item">
-            <a href="#?" className={selected === 'purchases' ? 'active text-light' : ''} onClick={this.handleClick} name="purchases">
-              <i className="fas fa-pound-sign"/>My purchases
-            </a>
-          </li>
-          <li className="tab-item">
-            <a href="#?" className={selected === 'sales' ? 'active text-light' : ''} onClick={this.handleClick} name="sales">
-              <i className="fas fa-money-bill fa-rotate-45"/>My stories
-            </a>
-          </li>
-          <li className="tab-item">
-            <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge="1" onClick={this.handleClick} name="requests">
-              <i className="far fa-handshake" name="requests"/>Open requests
-            </a>
-          </li>
-        </ul>
 
         {selected === 'purchases' && <Purchase/>}
         {selected === 'sales' && <SalesCard/>}

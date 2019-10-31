@@ -35,10 +35,10 @@ class StoryAction extends React.Component {
     const { story } = this.props
     const { isOwner, offerMade } = this.state
     return (
-      <div className="flex-column v-center">
+      <div className="flex-column v-center v-margin">
         {!isOwner &&
           <>
-            {offerMade && <><i className="far fa-thumbs-up"/>Offer sent</>}
+            {offerMade && <><i className="icon icon-2x icon-mail text-success"/>Offer sent</>}
             <Link to={`/stories/${story._id}/edit`}><button className="btn btn-warning" id="editBtn">Edit Story</button></Link>
             {!offerMade &&
               <>

@@ -1,13 +1,16 @@
 const Story = require('../models/Story')
+const QueryHelper = require('../lib/queryHelper')
 
 function index(req, res) {
   // console.log(req.query)
   // query put in here for making broader requests to the MongoDB
   Story
-    .find(req.query)
+    .find(QueryHelper.buildParamQuery(req.query))
+    .populate('postedBy')
     .then(stories => res.status(200).json(stories))
     .catch(err => res.status(500).json(err))
 }
+
 
 // making request for one story -/story/Id
 function show(req, res) {
@@ -86,9 +89,6 @@ function edit(req, res) {
       }
     })
 }
-
-
-
 
 
 module.exports = {

@@ -10,6 +10,7 @@ router.route('/stories')
   .get(stories.index)
   .post(secureRoute, stories.create)
 
+  
 // Handling getting one strory
 router.route('/stories/:id')
   .get(stories.show)

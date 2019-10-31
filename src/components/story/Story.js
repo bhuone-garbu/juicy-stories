@@ -11,10 +11,10 @@ class Story extends React.Component {
     return (
       <article key={story._id}>
         <div className="columns bg-gray box-shadow v-margin">
-          <div className="column col-9">
+          <div className="column col-md-12 col-9">
             <StoryCard { ...story }/>
           </div>
-          <div className="column col-3 v-center h-center">
+          <div className="column col-md-12 col-3 v-center h-center">
             <StoryAction story={story} isCurrentUserBuyer={isCurrentUserBuyer}/>
           </div>
         </div>

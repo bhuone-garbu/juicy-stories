@@ -40,7 +40,7 @@ class OfferRequest extends React.Component {
             <StoryCard {...offer.story} />
           </div>
           <div className="column col-4 h-center flex-column">
-            <OfferAction offerId={offer._id} handleClick={this.handleClick} />
+            <OfferAction offer={offer} handleClick={this.handleClick} />
           </div>
         </div>
         <div>

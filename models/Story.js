@@ -21,4 +21,6 @@ const storySchema = mongoose.Schema({
   timestamps: true
 })
 
+storySchema.index({ title: 'text', description: 'text' })
+
 module.exports = mongoose.model('Story', storySchema)
