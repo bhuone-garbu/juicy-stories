@@ -11,8 +11,10 @@ class OfferRequest extends React.Component {
   constructor() {
     super()
     this.state = {
-      offers: null
+      offers: null,
+      isActive: true
     }
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -21,22 +23,30 @@ class OfferRequest extends React.Component {
       .catch(err => console.error(err))
   }
 
+  handleClick() {
+    console.log('toglled')
+
+    this.setState({ isActive: !this.state.isActive })
+  }
 
   render() {
     const { offers } = this.state
     if (!offers) return <div className="loading loading-lg"></div>
 
     return offers.map(offer => (
-      <article key={offer._id} className="box-shadow">
-        <div className="columns v-margin top-padding">
-          <div className="column col-8 col-md-12">
-            <StoryCard {...offer.story} postedBy={offer.seller}/>
+      <article key={offer._id}>
+        <div className="columns box-shadow v-margin top-padding">
+          <div className="column col-8">
+            <StoryCard {...offer.story} />
           </div>
-          <div className="column col-4 col-md-12 h-center flex-column">
-            <OfferAction offer={offer}/>
+          <div className="column col-4 h-center flex-column">
+            <OfferAction offer={offer} handleClick={this.handleClick} />
           </div>
         </div>
-        <MessagesCard offerId={offer._id}/>
+        <div>
+          {this.state.isActive && <MessagesCard offerId={offer._id} />}
+
+        </div>
       </article>)
     )
   }

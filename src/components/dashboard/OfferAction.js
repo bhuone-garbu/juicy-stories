@@ -28,10 +28,11 @@ class OfferAction extends React.Component {
           <button className="btn bg-warning input-group-btn" name="counter">Counter</button>
         </div>
         <div className="vertical-margin h-padding v-margin h-center">
+          
           <button onClick={this.props.handleClick}>
-            <i  className="icon icon-2x icon-mail"/>Messages
+            <i className="icon icon-2x icon-mail"/>Messages
           </button>
-       
+          
         </div>
       </>
     )

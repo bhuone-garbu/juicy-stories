@@ -5,7 +5,7 @@ const StoryForm = ({ title, description, contentLink , minimumPrice, category, h
   
   <section className="col-md12 col-12">
     <div className="card bg-gray">
-      <div className="form-group p-centered col-10">
+      <div className="form-group p-centered col-10"> 
         <label className="form-label" htmlFor="title">Title</label>
         <input onChange={handleChange} className="form-input input-lg" value={title} type="text" id="title" placeholder="Title"  
         />

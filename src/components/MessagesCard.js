@@ -8,6 +8,8 @@ class MessagesCard extends React.Component {
   constructor() {
     super()
 
+    this.myDiv = React.createRef()
+
     this.state = {
       data: null,
       value: '',
@@ -51,7 +53,7 @@ class MessagesCard extends React.Component {
           <div className="column col-12 p-centered col-xs-12">
             <div className="panel">
               <div className="panel-header text-bold">Messages</div>
-              <div className="panel-body" style={ { 'overflow-y': 'scroll', 'height': '150px' } }>
+              <div className="panel-body" style={ { 'overflowY': 'scroll', 'height': '150px' } }>
                 {!messages && <div className="loading loading-lg"></div>}
                 {messages &&
                   messages.map(message => (
