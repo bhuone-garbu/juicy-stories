@@ -37,8 +37,6 @@ class Purchase extends React.Component {
 
   render() {
     const { offers, totalAmount } = this.state
-    console.log(offers)
-    console.log(Auth.getPayload().sub)
 
     if (!offers) return <div className="loading loading-lg"></div>
     if (offers.length === 0 ) return <h2 className="h2 text-center v-margin">You have not purchased anything</h2>

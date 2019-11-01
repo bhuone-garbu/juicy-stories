@@ -16,7 +16,7 @@ class Dashboard extends React.Component {
     this.state = {
       selected: 'purchases',
       userDetail: null,
-      openRequests: ''
+      openRequests: null // all offers where the seller is the current user
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -36,11 +36,10 @@ class Dashboard extends React.Component {
         this.setState({ userDetail })
         return userDetail // return the promise to chain
       })
-      // .then(() => {
-      //   axios.get(`/api/stories?postedBy=${Auth.getPayload().sub}`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
-      //     .then(res => this.setState({ myStories: res.data }))
-      //     .catch(err => console.log(err))
-      // })
+      .then(() => { // return it to not have nested inner chain of '.then's
+        return axios.get(`/api/offers?seller=${Auth.getPayload().sub}&status=OFFER_SENT`)
+      })
+      .then(response => this.setState({ openRequests: response.data }) )
       .catch(err => err )
   }
 
@@ -52,6 +51,8 @@ class Dashboard extends React.Component {
 
   render() {
     const { selected, userDetail, openRequests } = this.state
+    if (!openRequests) return <div className="loading loading-lg"></div>
+
     return (
       <section className="container">
         <div className="empty">
@@ -73,7 +74,7 @@ class Dashboard extends React.Component {
               </a>
             </li>
             <li className="tab-item tooltip tooltip-top" data-tooltip="Offers from potential buyers">
-              <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge={openRequests} onClick={this.handleClick} name="requests">
+              <a href="#?" className={selected === 'requests' ? 'badge active text-light' : 'badge'} data-badge={openRequests.length} onClick={this.handleClick} name="requests">
                 <i className="far fa-handshake" name="requests"/>Open requests
               </a>
             </li>
@@ -81,8 +82,8 @@ class Dashboard extends React.Component {
         </div>
 
         {selected === 'purchases' && <Purchase/>}
-        {selected === 'sales' && <MyStories/>}
-        {selected === 'requests' && <OfferRequests reportTotalRequest={this.reportTotalRequest}/>}
+        {selected === 'sales' && <MyStories />}
+        {selected === 'requests' && <OfferRequests openRequests={openRequests} reportTotalRequest={this.reportTotalRequest}/>}
 
       </section>
     )

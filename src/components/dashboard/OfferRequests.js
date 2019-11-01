@@ -25,7 +25,7 @@ class OfferRequest extends React.Component {
 
 
   componentDidMount() {
-    this.refresh(false)
+    this.setState({ offers: this.props.openRequests })
   }
 
 
