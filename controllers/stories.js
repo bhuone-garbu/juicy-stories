@@ -7,6 +7,7 @@ function index(req, res) {
   Story
     .find(QueryHelper.buildParamQuery(req.query))
     .populate('postedBy')
+    .sort({ updatedAt: 'desc' }) // well this does not seem to work :(
     .then(stories => res.status(200).json(stories))
     .catch(err => res.status(500).json(err))
 }

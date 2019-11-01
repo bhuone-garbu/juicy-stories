@@ -97,15 +97,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         image: ['https://e3.365dm.com/19/10/768x432/skynews-boris-johnson-prime-minister_4816498.jpg?20191026132558']
       },
       {
-        title: 'Video clip of NHS nurse negligence',
-        description: 'Footage of a nurse beating a helpless elderly person',
-        contentLink: 'http://google.co.uk/',
-        postedBy: user[1],
-        category: 'video',
-        minimumPrice: 45.5,
-        image: ['https://secure.i.telegraph.co.uk/multimedia/archive/02578/nhs_2578766b.jpg']
-      },
-      {
         title: 'Youtube stars Ethan and Grayson Dolan arrested in Paris',
         description: 'PARIS-According to French police officials Youtube stars Ethan and Grayson Dolan arrested for taking pictures of the Eiffel tower in the dark.',
         contentLink: 'http://google.co.uk/',
@@ -265,6 +256,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         category: 'video',
         minimumPrice: 50.5,
         image: ['https://i2-prod.mirror.co.uk/incoming/article20714790.ece/ALTERNATES/s1200b/1_Real-life-Toy-Story-moment-CCTV-shows-spooky-goings-on-at-Nottingham-bar.jpg']
+      },
+      {
+        title: 'Video clip of NHS nurse negligence',
+        description: 'Footage of a nurse ignoring a helpless elderly person',
+        contentLink: 'http://google.co.uk/',
+        postedBy: user[1],
+        category: 'video',
+        minimumPrice: 45.5,
+        image: ['https://media.npr.org/assets/img/2015/02/24/nurses-va-91-edit_wide-d65ea7eac4d5e302a887936683bb858186099c49.jpg?s=1400']
       }])
     })
     .then(stories => {
