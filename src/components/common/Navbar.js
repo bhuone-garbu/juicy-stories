@@ -90,7 +90,7 @@ class Navbar extends React.Component {
           <header className="navbar md-padding">
             <div className="navbar-section">
               <Link to="/" className="navbar-brand mr-4">
-                <img className="img-responsive" src={logo} width="100px" alt="logo" />
+                <img className="img-responsive" src={logo} width="150px" alt="logo" />
               </Link>
             </div>
             

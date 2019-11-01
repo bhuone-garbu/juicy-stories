@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
     const name = e.target.name
     if (name) this.setState({ selected: name })
   }
-  
+
 
   componentDidMount(){
     Helper.getUserDetail()
@@ -59,12 +59,12 @@ class Dashboard extends React.Component {
       <section className="container">
         <div className="empty">
           {userDetail && 
-          <>
+          <div className="v-margin">
             <figure className="empty-icon avatar avatar-xxl">
               <img src={userDetail.profileUrl} alt="profile pic" />
             </figure>
             <p className="empty-title h4 text-black text-bold">{userDetail.firstName} {userDetail.lastName}</p>
-          </>
+          </div>
           }
           
           {/* this is just for toggling */}
