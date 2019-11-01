@@ -1,9 +1,11 @@
 import React from 'react'
+import axios from 'axios'
 
 // all local imports
 import Helper from '../../lib/helper'
+import Auth from '../../lib/auth'
 import Purchase from './Purchase'
-import OfferRequest from './OfferRequest'
+import OfferRequests from './OfferRequests'
 import MyStories from './MyStories'
 
 
@@ -18,6 +20,7 @@ class Dashboard extends React.Component {
     }
 
     this.handleClick = this.handleClick.bind(this)
+    this.reportTotalRequest = this.reportTotalRequest.bind(this)
   }
 
 
@@ -29,8 +32,21 @@ class Dashboard extends React.Component {
 
   componentDidMount(){
     Helper.getUserDetail()
-      .then(userDetail => this.setState({ userDetail }))
+      .then(userDetail => {
+        this.setState({ userDetail })
+        return userDetail // return the promise to chain
+      })
+      // .then(() => {
+      //   axios.get(`/api/stories?postedBy=${Auth.getPayload().sub}`, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+      //     .then(res => this.setState({ myStories: res.data }))
+      //     .catch(err => console.log(err))
+      // })
       .catch(err => err )
+  }
+
+
+  reportTotalRequest(openRequests){
+    this.setState({ openRequests })
   }
 
 
@@ -64,10 +80,9 @@ class Dashboard extends React.Component {
           </ul>
         </div>
 
-
         {selected === 'purchases' && <Purchase/>}
         {selected === 'sales' && <MyStories/>}
-        {selected === 'requests' && <OfferRequest/>}
+        {selected === 'requests' && <OfferRequests reportTotalRequest={this.reportTotalRequest}/>}
 
       </section>
     )

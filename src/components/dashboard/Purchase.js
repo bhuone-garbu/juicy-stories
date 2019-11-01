@@ -1,8 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 
-import StoryCard from '../story/StoryCard'
-import StoryAction from '../story/StoryAction'
 import Auth from '../../lib/auth'
 import Story from '../story/Story'
 
