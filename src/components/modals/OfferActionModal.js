@@ -20,6 +20,7 @@ class OfferActionModal extends React.Component {
     const status = e.target.value === 'accept' ? 'ACCEPTED' : 'REJECTED'
 
     const { offer, afterSubmit } = this.props
+    
     axios.put(`/api/offers/${offer._id}`, { status }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })

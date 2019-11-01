@@ -4,7 +4,9 @@ const { secret } = require('../config/environment')
 
 // register route for user - /register
 function register(req, res) {
-  User.create(req.body).then(user => res.status(201).json({ message: `Thanks for registering ${user.firstName}` }))
+  User
+    .create(req.body)
+    .then(user => res.status(201).json({ message: `Thanks for registering ${user.firstName}` }))
     .catch(err => res.status(422).json(err))
 }
 

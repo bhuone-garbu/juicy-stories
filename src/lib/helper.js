@@ -23,7 +23,8 @@ class Helper {
       .then(res => ({
         id: res.data._id,
         firstName: this.capitalizeFirstLetter(res.data.firstName),
-        lastName: this.capitalizeFirstLetter(res.data.lastName)
+        lastName: this.capitalizeFirstLetter(res.data.lastName),
+        profileUrl: res.data.profileUrl
       }))
   }
 

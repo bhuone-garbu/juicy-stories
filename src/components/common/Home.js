@@ -9,22 +9,22 @@ class Home extends React.Component {
     super()
 
     this.state = {
-      topStories: null
+      topStories: null // top three stories
     }
   }
 
   componentDidMount() {
     axios.get('/api/stories')
       .then(res => {
-        const topStories = res.data
-        this.setState({ topStories: topStories })
+        const topStories = res.data.splice(0,3)
+        this.setState({ topStories })
       })
   }
 
   render() {
     const stories = this.state.topStories
-
     if (!stories) return <div className="loading loading-lg"></div>
+
     return (
       <div className="container">
         <section className="columns">
@@ -44,11 +44,11 @@ class Home extends React.Component {
             <div className="column text-center">
               <div className="card">
                 <div className="card-image">
-                  <img className="img-responsive" src="https://cdn.vox-cdn.com/thumbor/3CLCd-YqNX4yul1wX4zOajKD8ss=/0x0:1280x720/1200x800/filters:focal(538x258:742x462)/cdn.vox-cdn.com/uploads/chorus_image/image/53091739/maxresdefault.0.jpg"
+                  <img className="img-responsive" src={stories[0].image[0]}
                     alt="photo of some lady"/></div>
                 <div className="card-header">
-                  <div className="card-title h6 text-primary">A Dog’s Purpose that appeared to show the film’s handlers forcing a distressed dog into a pool of water</div>
-                  <div className="card-subtitle text-gray">The statement also explained that the dog, a German Shepherd named Hercules, had been “trained and conditioned” for his scenes, and that while he did show signs of distress, filming had stopped and that he “was not forced to swim in the water at any time.”</div>
+                  <div className="card-title h6 text-primary">{stories[0].title}</div>
+                  <div className="card-subtitle text-gray">{stories[0].description}</div>
                 </div>
               </div>
             </div>
@@ -56,20 +56,20 @@ class Home extends React.Component {
               <div className="columns col-gapless">
                 <div className="column col-6 col-sm-12 card">
                   <div className="card-image">
-                    <img className="img-responsive" src="https://pbs.twimg.com/media/DuY9w2vXcAA4YDu.jpg"
-                      alt="photo of some lady"/></div>
-                  <div className="card-header">
-                    <div className="card-title h6 text-primary">{stories[0].title}</div>
-                    <div className="card-subtitle text-gray">{stories[0].description}</div>
-                  </div>
-                </div>
-                <div className="column col-6 col-sm-12 card">
-                  <div className="card-image">
-                    <img className="img-responsive" src="https://img.apmcdn.org/3d6aaf1f7c3216276bb47e679f679aa5c9a7b17c/square/babe3a-20180821-fightclub8.jpeg"
+                    <img className="img-responsive" src={stories[1].image[0]}
                       alt="photo of some lady"/></div>
                   <div className="card-header">
                     <div className="card-title h6 text-primary">{stories[1].title}</div>
                     <div className="card-subtitle text-gray">{stories[1].description}</div>
+                  </div>
+                </div>
+                <div className="column col-6 col-sm-12 card">
+                  <div className="card-image">
+                    <img className="img-responsive" src={stories[2].image[0]}
+                      alt="photo of some lady"/></div>
+                  <div className="card-header">
+                    <div className="card-title h6 text-primary">{stories[2].title}</div>
+                    <div className="card-subtitle text-gray">{stories[2].description}</div>
                   </div>
                 </div>
               </div>

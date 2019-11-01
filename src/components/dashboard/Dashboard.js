@@ -29,6 +29,7 @@ class Dashboard extends React.Component {
     const name = e.target.name
     if (name) this.setState({ selected: name })
   }
+  
 
   componentDidMount(){
     Helper.getUserDetail()
@@ -44,6 +45,7 @@ class Dashboard extends React.Component {
   }
 
 
+  // this is being called by the child to update the total open offers
   reportTotalRequest(openRequests){
     this.setState({ openRequests })
   }
@@ -56,10 +58,14 @@ class Dashboard extends React.Component {
     return (
       <section className="container">
         <div className="empty">
-          <figure className="empty-icon avatar avatar-xxl">
-            <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
-          </figure>
-          {userDetail && <p className="empty-title h4 text-black text-bold">{userDetail.firstName} {userDetail.lastName}</p>}
+          {userDetail && 
+          <>
+            <figure className="empty-icon avatar avatar-xxl">
+              <img src={userDetail.profileUrl} alt="profile pic" />
+            </figure>
+            <p className="empty-title h4 text-black text-bold">{userDetail.firstName} {userDetail.lastName}</p>
+          </>
+          }
           
           {/* this is just for toggling */}
           <ul className="tab">

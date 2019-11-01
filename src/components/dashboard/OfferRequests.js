@@ -39,7 +39,7 @@ class OfferRequest extends React.Component {
           this.setState({ offers: response.data })
 
           // this is an array of offers
-          if (response.data) this.props.reportTotalRequest(response.data.length)
+          if (response.data) this.props.reportTotalRequest(response.data)
         })
         .catch(err => console.error(err))
     }, 300)

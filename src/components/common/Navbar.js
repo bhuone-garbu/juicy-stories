@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import queryString from 'query-string'
+
+
 import logo from '../../assets/logo2.png'
 import Auth from '../../lib/auth'
-import queryString from 'query-string'
+import Helper from '../../lib/helper'
 
 
 class Navbar extends React.Component {
@@ -13,7 +16,8 @@ class Navbar extends React.Component {
     this.state = {
       isAuthenticated: false,
       searchTerm: '',
-      category: 'all'
+      category: 'all',
+      profileUrl: null
     }
 
     this.handleLogout = this.handleLogout.bind(this)
@@ -49,19 +53,37 @@ class Navbar extends React.Component {
     this.props.history.push('/')
   }
 
+
   componentDidMount() {
-    this.setState({ isAuthenticated: Auth.isAuthenticated() })
+    this.checkAuthentication()
+  }
+
+
+  checkAuthentication() {
+    // Need to compare the previous authentication and current authentication state
+    const currentAuthentication = this.state
+    const isAuthenticated = Auth.isAuthenticated()
+
+    if (isAuthenticated && isAuthenticated !== currentAuthentication ) this.updateProfilePic()
+
+    this.setState({ isAuthenticated })
+  }
+
+  updateProfilePic(){
+
+    Helper.getUserDetail()
+      .then(userDetail => this.setState({ profileUrl: userDetail.profileUrl }))
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
-      this.setState({ isAuthenticated: Auth.isAuthenticated() })
+      this.checkAuthentication()
     }
   }
 
 
   render() {
-    const { isAuthenticated, searchTerm, category } = this.state
+    const { isAuthenticated, searchTerm, category, profileUrl } = this.state
     return (
       <div className="bg-primary">
         <div className="container">
@@ -105,7 +127,7 @@ class Navbar extends React.Component {
                 <>
                   <Link to="/dashboard">
                     <figure className="avatar avatar-lg tooltip tooltip-bottom" data-tooltip="View dashboard">
-                      <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="profile pic" />
+                      <img src={profileUrl} alt="profile pic" />
                     </figure>
                   </Link>
                   <button className="btn bg-secondary input-group-btn tooltip tooltip-bottom" data-tooltip="Logout? 🥺" onClick={this.handleLogout}>
