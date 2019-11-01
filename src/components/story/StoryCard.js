@@ -19,9 +19,9 @@ const StoryCard = ({ title, description, postedBy, category, image }) => {
       </div>
       <div className="column col-sm-12 col-7">
         <h2 className="title h3 text-left text-break">{title}</h2>
-        {(postedBy && postedBy.firstName) &&
-          <h3 className="h6 no-margin">Seller: <span className="text-bold text-primary">{postedBy.firstName} {postedBy.lastName}</span></h3>
-        }
+        {/* {(postedBy && postedBy.firstName) && */}
+        <h3 className="h6 no-margin">Seller: <span className="text-bold text-primary">{postedBy.firstName} {postedBy.lastName}</span></h3>
+        {/* } */}
         <p>Content type: <span className="text-bold">{`${Helper.capitalizeFirstLetter(category)}`}</span></p>
         <div className="top-margin">
           <p className="text-bold no-margin">Description</p>

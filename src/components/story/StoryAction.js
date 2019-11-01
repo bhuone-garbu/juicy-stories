@@ -32,13 +32,19 @@ class StoryAction extends React.Component {
 
 
   render() {
-    const { story } = this.props
+    const { story, offerStatus } = this.props
     const { isOwner, offerMade } = this.state
     return (
       <div className="flex-column v-center v-margin">
         {!isOwner &&
           <>
-            {offerMade && <><i className="icon icon-2x icon-mail text-success"/>Offer sent</>}
+            {offerMade && 
+              <>
+                {offerStatus === 'OFFER_SENT' && <><i className="icon icon-2x icon-mail text-warning"/>Offer sent</>}
+                {offerStatus === 'ACCEPTED' && <><i className="icon icon-2x icon-mail text-success"/>Story bought</>}
+                {offerStatus === 'REJECTED' && <><i className="icon icon-2x icon-mail text-error"/>Offer rejected</>}
+              </>
+            }
             {!offerMade &&
               <>
                 <p>Minium accepted price</p>

@@ -49,7 +49,7 @@ class StoryEdit extends React.Component {
     const { title, description, minimumPrice, contentLink, category, image1, image2, image3 } = this.state.data
     const sendData = {
       title, description, minimumPrice, contentLink, category,
-      image: [image1, image2, image3]
+      image: [image1, image2, image3].filter(i => i)
     }
 
     const id = this.props.match.params.id
@@ -65,14 +65,13 @@ class StoryEdit extends React.Component {
     const data = this.state.data
 
     return (
-      <div className="card col-8 p-centered mt-2">
-        <div className="h2 text-center bg-gray">Edit The Story </div>
-        <StoryForm
-          {...data}
-          submitBtnName='Update story'
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange} />
-      </div>
+      <StoryForm
+        {...data}
+        formHeading="Edit story"
+        submitBtnName="Update story"
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+      />
     )
   }
 }

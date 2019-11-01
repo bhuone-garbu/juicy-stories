@@ -4,7 +4,7 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import StoryAction from '../story/StoryAction'
 import StoryCard from '../story/StoryCard'
-import SalesCard from './SalesCard'
+import SalesCard from './SalesTable'
 
 
 class MyStories extends React.Component {

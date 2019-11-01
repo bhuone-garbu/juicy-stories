@@ -7,15 +7,15 @@ import StoryAction from './StoryAction'
 class Story extends React.Component {
   
   render(){
-    const { story, isCurrentUserBuyer } = this.props
+    const { story, isCurrentUserBuyer, postedBy = story.postedBy, offerStatus = 'OFFER_SENT' } = this.props
     return (
       <article key={story._id}>
-        <div className="columns bg-gray box-shadow v-margin">
+        <div className="columns">
           <div className="column col-md-12 col-9">
-            <StoryCard { ...story }/>
+            <StoryCard { ...story } postedBy={postedBy}/>
           </div>
           <div className="column col-md-12 col-3 v-center h-center">
-            <StoryAction story={story} isCurrentUserBuyer={isCurrentUserBuyer}/>
+            <StoryAction story={story} isCurrentUserBuyer={isCurrentUserBuyer} offerStatus={offerStatus}/>
           </div>
         </div>
       </article>

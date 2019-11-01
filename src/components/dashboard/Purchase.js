@@ -4,6 +4,7 @@ import axios from 'axios'
 import StoryCard from '../story/StoryCard'
 import StoryAction from '../story/StoryAction'
 import Auth from '../../lib/auth'
+import Story from '../story/Story'
 
 class Purchase extends React.Component {
   constructor() {
@@ -19,8 +20,8 @@ class Purchase extends React.Component {
     // just faking with the timeout so that it's not too responsive
     axios.get(`/api/offers?buyer=${Auth.getPayload().sub}`)
       .then(response => {
-        const offers = response.data
-        
+        const offers = response.data.filter(offer => offer.seller._id !== Auth.getPayload().sub)
+
         const totalAmount = offers
           .filter(offer => offer.status === 'ACCEPTED')
           .reduce((sum, offer) => sum += offer.offerPrice, 0)
@@ -38,6 +39,9 @@ class Purchase extends React.Component {
 
   render() {
     const { offers, totalAmount } = this.state
+    console.log(offers)
+    console.log(Auth.getPayload().sub)
+
     if (!offers) return <div className="loading loading-lg"></div>
     if (offers.length === 0 ) return <h2 className="h2 text-center v-margin">You have not purchased anything</h2>
     return (
@@ -46,19 +50,12 @@ class Purchase extends React.Component {
           <h3 className="h3">Total amount spent: <span className="text-bold">{Number(totalAmount).toFixed(2)}&nbsp;JC</span></h3>
         </div>
         {offers.map( offer=> (
-          <article key={offer._id}>
-            <div className="columns bg-gray box-shadow v-margin">
-              <div className="column col-md-12 col-9">
-                <StoryCard { ...offer.story } postedBy={offer.seller}/>
-              </div>
-              <div className="column col-md-12 col-3 v-center h-center">
-                <StoryAction story={offer.story} isCurrentUserBuyer={true}/>
-              </div>
-              <div className="column">
-                <h4 className="h4">Price paid: <span className="text-bold">{Number(offer.offerPrice).toFixed(2)}&nbsp;JC</span></h4>
-              </div>
+          <div key={offer._id} className="column box-shadow v-margin">
+            <Story story={offer.story} postedBy={offer.seller} isCurrentUserBuyer={true} offerStatus={offer.status}/>
+            <div className="column">
+              <h4 className="h4">Offer price: <span className="text-bold">{Number(offer.offerPrice).toFixed(2)}&nbsp;JC</span></h4>
             </div>
-          </article>
+          </div>
         ))}
           
       </section>

@@ -27,7 +27,7 @@ class Home extends React.Component {
     if (!stories) return <div className="loading loading-lg"></div>
     return (
       <div className="container">
-        <section className="v-center columns">
+        <section className="columns">
 
           <article className="column col-6 col-sm-12 text-center v-margin">
             <h1 className="h1 move no-margin text-bold text-black">Unlimited</h1>
@@ -42,7 +42,6 @@ class Home extends React.Component {
 
           <article className="column col-6 col-sm-12 text-center v-margin">
             <div className="column text-center">
-              <h2 className="h4">Top Stories</h2>
               <div className="card">
                 <div className="card-image">
                   <img className="img-responsive" src="https://cdn.vox-cdn.com/thumbor/3CLCd-YqNX4yul1wX4zOajKD8ss=/0x0:1280x720/1200x800/filters:focal(538x258:742x462)/cdn.vox-cdn.com/uploads/chorus_image/image/53091739/maxresdefault.0.jpg"

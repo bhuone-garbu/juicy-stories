@@ -6,7 +6,7 @@ import StoryForm from './StoryForm'
 
 
 class StoryNew extends React.Component {
-  constructor(){
+  constructor() {
 
     super()
     this.state = {
@@ -19,51 +19,45 @@ class StoryNew extends React.Component {
         image1: '',
         image2: '',
         image3: ''
-        
+
       }
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  
-  
+
+
   handleChange(e) {
     const data = { ... this.state.data, [e.target.id]: e.target.value }
-    this.setState({ data })  
-    
+    this.setState({ data })
+
   }
 
-  handleSubmit(){
+  handleSubmit() {
 
     const { title, description, minimumPrice, contentLink, category, image1, image2, image3 } = this.state.data
     const sendData = {
       title, description, minimumPrice, contentLink, category,
-      image: [image1, image2, image3]
+      image: [image1, image2, image3].filter(i => i)
     }
 
-    axios.post('/api/stories', sendData ,{
+    axios.post('/api/stories', sendData, {
       headers: { Authorization: `Bearer ${User.getToken()}` }
     })
       .then(() => this.props.history.push('/stories'))
       .catch(err => console.error(err))
   }
 
-  render(){
+  render() {
     const data = this.state.data
-    
     return (
-      <>
-        <div className="card mt-2 p-centered col-8" > <div className="h2 text-center bg-gray">Create New Story </div>
-
-          <StoryForm
-            { ...data }
-            submitBtnName='Create story'
-            handleSubmit={this.handleSubmit}
-            handleChange={this.handleChange} />
-        </div>
-      </>
-
-      
+      <StoryForm
+        {...data}
+        formHeading="New story"
+        submitBtnName="Create story"
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+      />
     )
   }
 }
