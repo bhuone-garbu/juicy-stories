@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/**/*_spec.js --require test/helper --recursive --exit",
     "seed": "node db/seeds.js",
     "serve:back": "nodemon index.js",
     "serve:front": "webpack-dev-server --mode=development",
@@ -17,10 +17,14 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "bulma": "^0.8.0",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "dotenv": "^8.2.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.16.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",
@@ -35,11 +39,18 @@
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.2.2",
     "mongoose": "^5.7.6",
+    "mongoose-id-validator": "^0.5.3",
+    "query-string": "^6.8.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "spectre.css": "^0.5.8",
+    "supertest": "^4.0.2"
   }
 }

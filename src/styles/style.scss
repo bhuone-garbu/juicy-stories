@@ -1,0 +1,188 @@
+// importing our own variable files that overrides some of the spectree css variables
+@import "variables";
+
+// Import full Spectre source code
+@import "../../node_modules/spectre.css/src/spectre";
+
+
+#root {
+  background: rgba(0, 0, 0, 0.041);
+  min-height: 100vh;
+}
+
+.empty {
+  padding: 1.5rem 0 0;
+}
+
+.btn {
+  border: none;
+  margin: 0 0.25rem;
+}
+
+.container {
+  width: 85vw;
+  padding: 0;
+}
+
+a:focus {
+  box-shadow: none;
+}
+
+i {
+  font-size: 1.5rem;
+  margin: 0 5px;
+}
+
+// p {
+//   padding-left: 0.4rem;
+//   padding-right: 0.4rem;
+// }
+
+#uploadIcon {
+  color: $warning_color;
+}
+
+/* Overriding some colors and styles from spectre */
+.tab {
+
+  .tab-item {
+    cursor: pointer;
+  }
+
+  .tab-item a {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #b1b0b0;
+    padding: 0.5rem 1rem;
+  }
+
+  .tab-item.active a, .tab-item a.active {
+    background: none;
+    background: linear-gradient($dark_color, $primary_color);
+  }
+}
+
+.text-black {
+  color: #02020C;
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-container {
+  max-height: 100vh;
+}
+
+// adding tiny 1rem padding at both right and left side
+.h-padding {
+  padding: 0 0.5rem;
+}
+
+.md-padding {
+  padding: 1rem 0.5rem;
+}
+
+// small padding to left and right
+.sm-h-padding {
+  padding: 0 0.5rem;
+}
+
+// small padding to top and bottom
+.sm-h-padding {
+  padding: 0.5rem 0;
+}
+
+// .btn {
+//   margin: 0 0.5rem;
+// }
+
+.avatar {
+  &.avatar-xxl {
+    @include avatar-base($unit-25);
+  }
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// forcing the container to display in flex and 'align-items' so items are centered in vertical direction
+.v-center {
+  display: flex;
+  align-items: center;
+}
+
+// forcing the container to display in flex and 'justify-content' so items are centered in horizontal direction
+.h-center {
+  display: flex;
+  justify-content: center;
+}
+
+// changing the flex-direction to be in column as opposed to the default 'row' direction
+.flex-column {
+  flex-direction: column;
+}
+
+// adding a consistent 1rem margin at both top and bottom side
+.v-margin {
+  margin: 1rem 0;
+}
+
+.h-margin {
+  margin: 0 0.5rem;
+}
+
+.top-margin {
+  margin-top: 1rem;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.top-padding {
+  padding-top: 1rem;
+}
+
+.bottom-padding {
+  padding-bottom: 1rem;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 1rem rgba(48,55,66,.15);
+}
+
+.move{
+  animation: move 1s infinite linear;
+}
+
+@keyframes move {
+  0% {
+    transform: scale(1)
+  }
+  25% {
+    transform: scale(0.95)
+  }
+  77%{
+    transform: scale(1.05)
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+
+@media only screen and (max-width:840px){
+  .container {
+    width: 100vw;
+  }
+}

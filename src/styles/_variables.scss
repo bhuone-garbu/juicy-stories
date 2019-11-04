@@ -1,0 +1,21 @@
+// Overriding the core colors
+// $primary-color: #003049;
+$primary-color: #b82641;
+// $secondary-color: #F77F00;
+$secondary-color: #1a3ee3;
+
+
+$gray-color: #A7BCFE;
+
+// overriding control colors
+$success-color: #1f8811;
+$warning-color: #fcbf49;
+$error-color: #d62828;
+
+$unit-25: 5rem !default;
+
+// Google Fonts
+// Font Variables
+@import url(http://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400italic,700italic,400,700);
+$open-sans: 'Open Sans', sans-serif;
+$base-font-family: 'Nunito', $open-sans;
