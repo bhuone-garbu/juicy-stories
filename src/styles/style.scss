@@ -1,7 +1,9 @@
+// importing our own variable files that overrides some of the spectree css variables
 @import "variables";
 
 // Import full Spectre source code
 @import "../../node_modules/spectre.css/src/spectre";
+
 
 #root {
   background: rgba(0, 0, 0, 0.041);
