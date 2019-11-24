@@ -1,4 +1,4 @@
-/* global describe, beforeEach, afterEach , it , expect , api */
+/* global describe, afterEach , it , expect , api */
 
 const User = require('../../models/User')
 
