@@ -1,3 +1,7 @@
+# Update:
+
+This app is now completely broken since it was using Mongo addon on Heroku which had a free tier, that is now no longer available and was shutdown by Heroku. As of now, I have not had a chance to look into migrating it. 🙏
+
 # Juicy stories
 
 Proof of concept app
